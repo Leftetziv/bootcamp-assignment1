@@ -6,11 +6,6 @@
 package dataentry;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import model.Course;
-import model.Student;
-import model.Trainer;
 
 /**
  *

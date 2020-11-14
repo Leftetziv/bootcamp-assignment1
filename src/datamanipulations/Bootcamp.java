@@ -4,18 +4,9 @@
  * and open the template in the editor.
  */
 package datamanipulations;
-
 import dataentry.SyntheticDataEntry;
-import java.lang.reflect.Array;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import model.*;
 
 /**
