@@ -5,6 +5,7 @@
  */
 package datamanipulations;
 
+import dataentry.ReadFromUserUtilities;
 import dataentry.RemoveDuplicates;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -35,8 +36,7 @@ public class DataCalculations {
     }
 
     private static void printSubElementPerCourse(ArrayList<Course> courses, String element) {
-        Scanner sc = new Scanner(System.in);
-        String answer;
+        int answerInt;
         int courseCounter = 1;
 
         System.out.println("Enter the number of the course below to show its " + element + ", or q to exit");
@@ -45,59 +45,46 @@ public class DataCalculations {
             courseCounter++;
         }
 
-        do {
-            answer = sc.nextLine();
+        answerInt = ReadFromUserUtilities.readNumberOrQuit(1, courseCounter - 1);
 
-            if ("q".equalsIgnoreCase(answer)) {
-                break;
-            }
+        if (answerInt != -1) {
+            if ("students".equals(element)) {
+                courses.get(answerInt - 1).
+                        getStudents().stream().
+                        forEach(System.out::println);
+                System.out.println("");
+            } else if ("trainers".equals(element)) {
+                courses.get(answerInt - 1).
+                        getTrainers().stream().
+                        forEach(System.out::println);
+                System.out.println("");
+            } else if ("assignments".equals(element)) {
+                List<Assignment> assignments = new ArrayList<>();
+                courses.get(answerInt - 1).
+                        getStudents().stream().
+                        forEach(i -> i.getAssignments().
+                        forEach(assignments::add));
 
-            try {
-                if (Integer.parseInt(answer) > 0 && Integer.parseInt(answer) < courseCounter) {
-                    if ("students".equals(element)) {
-                        courses.get(Integer.parseInt(answer) - 1).
-                                getStudents().stream().
-                                forEach(System.out::println);
-                        System.out.println("");
-                    } else if ("trainers".equals(element)) {
-                        courses.get(Integer.parseInt(answer) - 1).
-                                getTrainers().stream().
-                                forEach(System.out::println);
-                        System.out.println("");
-                    } else if ("assignments".equals(element)) {
-                        List<Assignment> assignments = new ArrayList<>();
-                        courses.get(Integer.parseInt(answer) - 1).
-                                getStudents().stream().
-                                forEach(i -> i.getAssignments().
-                                forEach(assignments::add));
+                List<Assignment> individualAssignments;
+                List<Assignment> teamAssignments;
 
-                        List<Assignment> individualAssignments = new ArrayList<>();
-                        List<Assignment> teamAssignments = new ArrayList<>();
+                individualAssignments = assignments.stream().
+                        filter(i -> !i.isTeamAssignment()).
+                        collect(Collectors.toList());
+                teamAssignments = assignments.stream().
+                        filter(i -> i.isTeamAssignment()).
+                        collect(Collectors.toList());
 
-                        individualAssignments = assignments.stream().
-                                filter(i -> !i.isTeamAssignment()).
-                                collect(Collectors.toList());
-                        teamAssignments = assignments.stream().
-                                filter(i -> i.isTeamAssignment()).
-                                collect(Collectors.toList());
-
-                        System.out.println("Individual assignments:");
-                        individualAssignments.stream().forEach(Assignment::toStringStudent);
-                        System.out.println("Team assignments:");
-                        for (Assignment ass : teamAssignments) {
-                            ass.toStringStudent();                              //TODO REMOVE DUPLICATE TEAM ASSIGNMENTs TO ONLY SHOW ONCE
-                        }
-
-                        System.out.println("");
-                    }
-                    break;
+                System.out.println("Individual assignments:");
+                individualAssignments.stream().forEach(Assignment::toStringStudent);
+                System.out.println("Team assignments:");
+                for (Assignment ass : teamAssignments) {
+                    ass.toStringStudent();                              //TODO REMOVE DUPLICATE TEAM ASSIGNMENTs TO ONLY SHOW ONCE
                 }
-            } catch (NumberFormatException e) {
-                System.out.println("Enter a course number, or q to exit");
-                continue;
+
+                System.out.println("");
             }
-            System.out.println("Enter the number of the course above to show its " + element + ", or q to exit");
-        } while (!"q".equalsIgnoreCase(answer));
+        }
     }
 
     public static ArrayList<Student> getMultiCourseStudents(ArrayList<Course> courses) {
@@ -131,8 +118,7 @@ public class DataCalculations {
     }
 
     public static void printAssignmentsPerStudent(ArrayList<Student> students, ArrayList<Course> courses) {
-        Scanner sc = new Scanner(System.in);
-        String answer;
+        int answerInt;
         int studentCounter = 1;
 
         System.out.println("Enter the number of the Student below to show his/her assignments, or q to exit");
@@ -141,40 +127,27 @@ public class DataCalculations {
             studentCounter++;
         }
 
-        do {
-            answer = sc.nextLine();
-            if ("q".equalsIgnoreCase(answer)) {
-                break;
-            }
-            try {
-                if (Integer.parseInt(answer) > 0 && Integer.parseInt(answer) < studentCounter) {
+        answerInt = ReadFromUserUtilities.readNumberOrQuit(1, studentCounter - 1);
 
-                    Student student = students.get(Integer.parseInt(answer) - 1);
-                    if (!getMultiCourseStudents(courses).contains(student)) {
-                        System.out.println("Showing student's assginment:");
-                        student.getAssignments().stream().forEach(Assignment::toStringStudent);
-                        System.out.println();
-                    } else {
-                        System.out.println("Showing student's assginment (multiple course student):");
-                        for (Course c : courses) {
-                            int studentIndex = c.getStudents().indexOf(student);
-                            if (studentIndex != -1) {
-                                System.out.println(c.toString() + ":");
-                                c.getStudents().get(studentIndex).getAssignments().stream().forEach(Assignment::toStringStudent);
-                                System.out.println();
-                            }
-                        }
+        if (answerInt != -1) {
+            Student student = students.get(answerInt - 1);
+            if (!getMultiCourseStudents(courses).contains(student)) {
+                System.out.println("Showing student's assginment:");
+                student.getAssignments().stream().forEach(Assignment::toStringStudent);
+                System.out.println();
+            } else {
+                System.out.println("Showing student's assginment (multiple course student):");
+                for (Course c : courses) {
+                    int studentIndex = c.getStudents().indexOf(student);
+                    if (studentIndex != -1) {
+                        System.out.println(c.toString() + ":");
+                        c.getStudents().get(studentIndex).getAssignments().stream().forEach(Assignment::toStringStudent);
                         System.out.println();
                     }
-                    break;
                 }
-            } catch (NumberFormatException e) {
-                System.out.println("Enter a student number, or q to exit");
-                continue;
+                System.out.println();
             }
-            System.out.println("Enter the number of the student above to show its assignments, or q to exit");
-        } while (!"q".equalsIgnoreCase(answer));
-
+        }
     }
 
     public static void printAssignmentsToSubmitPerWeek(ArrayList<Course> courses) {
