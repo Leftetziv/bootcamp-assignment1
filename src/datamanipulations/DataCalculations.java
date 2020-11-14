@@ -10,6 +10,7 @@ import dataentry.RemoveDuplicates;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -151,47 +152,34 @@ public class DataCalculations {
     }
 
     public static void printAssignmentsToSubmitPerWeek(ArrayList<Course> courses) {
-        Scanner sc = new Scanner(System.in);
-        String answer;
         LocalDate date;
         LocalDateTime startDate;
         LocalDateTime endDate;
 
-        do {
-            System.out.println("Input date to find the assignments that are due the specific week of your date (YYYY-MM-DD), or q to exit");
-            answer = sc.nextLine();
-            if ("q".equalsIgnoreCase(answer)) {
-                break;
+        System.out.println("Input date to find the assignments that are due the specific week of your date (YYYY-MM-DD), or q to exit");
+
+        date = ReadFromUserUtilities.readLocalDateOrQuit();
+
+        if (!date.equals(LocalDate.parse("0001-01-01"))) {
+            while (date.getDayOfWeek() != DayOfWeek.MONDAY) {
+                date = date.minusDays(1);
             }
 
-            try {
-                date = LocalDate.parse(answer);
+            startDate = date.atStartOfDay();
+            endDate = startDate.plusWeeks(1).plusHours(24);
 
-                while (date.getDayOfWeek() != DayOfWeek.MONDAY) {
-                    date = date.minusDays(1);
-                }
-
-                startDate = date.atStartOfDay();
-                endDate = startDate.plusWeeks(1).plusHours(24);
-
-                for (Course c : courses) {
-                    for (Student s : c.getStudents()) {
-                        for (Assignment ass : s.getAssignments()) {
-                            if (ass.getDueDateTime().isAfter(startDate) && ass.getDueDateTime().isBefore(endDate) && ass.getSubDateTime() == null) {
-                                System.out.println(s.toString());
-                            }
+            for (Course c : courses) {
+                for (Student s : c.getStudents()) {
+                    for (Assignment ass : s.getAssignments()) {
+                        if (ass.getDueDateTime().isAfter(startDate) && ass.getDueDateTime().isBefore(endDate) && ass.getSubDateTime() == null) {
+                            System.out.println(s.toString());
                         }
                     }
                 }
-
-                break;
-            } catch (Exception e) {
-                System.out.println("Date must be in format YYYY-MM-DD");
-                continue;
             }
+        }
 
-        } while (!"q".equalsIgnoreCase(answer));
-
+//        
     }
 
 }

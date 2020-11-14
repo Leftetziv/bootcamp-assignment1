@@ -5,6 +5,7 @@
  */
 package dataentry;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 /**
@@ -35,6 +36,25 @@ public class ReadFromUserUtilities {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Input a number from " + start + " to " + end + ", or q to quit");
+            }
+        } while (true);
+    }
+    
+    public static LocalDate readLocalDateOrQuit() {
+        String answerStr;
+
+        do {
+            answerStr = sc.nextLine();
+
+            if ("q".equalsIgnoreCase(answerStr)) {
+                return LocalDate.parse("0001-01-01");
+            }
+
+            try {
+                LocalDate date = LocalDate.parse(answerStr);              
+                return date;               
+            } catch (Exception e) {
+                System.out.println("Enter a date in format YYYY-MM-DD, or q to quit");
             }
         } while (true);
     }
