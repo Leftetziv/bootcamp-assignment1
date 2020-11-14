@@ -16,7 +16,7 @@ import model.Student;
 
 /**
  *
- * @author Leyteris
+ * @author Leyteris git test
  */
 public class RegistryOffice {
 
