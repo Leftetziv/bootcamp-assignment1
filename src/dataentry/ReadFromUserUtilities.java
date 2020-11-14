@@ -32,10 +32,10 @@ public class ReadFromUserUtilities {
                 if (answerInt >= start && answerInt <= end) {
                     return answerInt;
                 } else {
-                    System.out.println("Input a number from " + start + " to " + end);
+                    System.out.println("Wrong input, input a number from " + start + " to " + end);
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Input a number from " + start + " to " + end + ", or q to quit");
+                System.out.println("Wrong input, input a number from " + start + " to " + end + ", or q to quit");
             }
         } while (true);
     }
@@ -54,8 +54,23 @@ public class ReadFromUserUtilities {
                 LocalDate date = LocalDate.parse(answerStr);              
                 return date;               
             } catch (Exception e) {
-                System.out.println("Enter a date in format YYYY-MM-DD, or q to quit");
+                System.out.println("Wrong input, enter a date in format YYYY-MM-DD, or q to quit");
             }
+        } while (true);
+    }
+    
+    public static String readString() {
+        String answerStr;
+
+        do {         
+            answerStr = sc.nextLine();
+
+            if (answerStr==null || answerStr.isEmpty()) {
+                System.out.println("Must input something");
+                continue;
+            }
+            return answerStr;
+      
         } while (true);
     }
 }
