@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package datamanipulations;
+import dataentry.ManualDataEntry;
 import dataentry.SyntheticDataEntry;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -25,12 +26,12 @@ public class Bootcamp {
         Scanner sc = new Scanner(System.in);
         System.out.println("Manual data entry or synthetic data? (man/syn)");
         String answer;
-        answer = "syn";
-//        answer = sc.nextLine();
-//        while (!answer.equalsIgnoreCase("man") && !answer.equalsIgnoreCase("syn")) {
-//            System.out.println("Select MANual or SYNthetic data entry");
-//            answer = sc.nextLine();
-//        }
+//        answer = "syn";
+        answer = sc.nextLine();
+        while (!answer.equalsIgnoreCase("man") && !answer.equalsIgnoreCase("syn")) {
+            System.out.println("Select MANual or SYNthetic data entry");
+            answer = sc.nextLine();
+        }
         if (answer.equalsIgnoreCase("syn")) {
             SyntheticDataEntry.createSynData();
 
@@ -41,7 +42,9 @@ public class Bootcamp {
 
             System.out.println("Created synthetic data");
         } else if (answer.equalsIgnoreCase("man")) {
-//            courses = ManualDataEntry.getCourses();
+            ManualDataEntry.createManData();
+            
+            
             System.out.println("manual");
         }
     }

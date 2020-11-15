@@ -154,7 +154,7 @@ public class DataCalculations {
 
         System.out.println("Input date to find the assignments that are due the specific week of your date (YYYY-MM-DD), or q to exit");
 
-        date = ReadFromUserUtilities.readLocalDateOrQuit();
+        date = ReadFromUserUtilities.readDateOrQuit();
 
         if (!date.equals(LocalDate.parse("0001-01-01"))) {
             while (date.getDayOfWeek() != DayOfWeek.MONDAY) {

@@ -18,14 +18,14 @@ public class Student {                  //Θεωρω οτι ονομα+επων�
     private String firstName; 
     private String lastName;
     private LocalDate dateOfBirth;
-    private float tuitionFees;
+    private int tuitionFees;
 
     private ArrayList<Assignment> assignments;
 
     public Student() {
     }
 
-    public Student(String firstName, String lastName, LocalDate dateOfBirth, float tuitionFees) {
+    public Student(String firstName, String lastName, LocalDate dateOfBirth, int tuitionFees) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -57,11 +57,11 @@ public class Student {                  //Θεωρω οτι ονομα+επων�
         this.dateOfBirth = dateOfBirth;
     }
 
-    public float getTuitionFees() {
+    public int getTuitionFees() {
         return tuitionFees;
     }
 
-    public void setTuitionFees(float tuitionFees) {
+    public void setTuitionFees(int tuitionFees) {
         this.tuitionFees = tuitionFees;
     }
 
