@@ -117,7 +117,7 @@ public class ReadFromUserUtilities {
                     System.out.println("Tuition cant be a negative number");
                 }
                 return tuitionFees;
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Must input a number");
             }
         } while (true);
