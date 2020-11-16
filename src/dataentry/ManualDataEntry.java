@@ -123,7 +123,11 @@ public class ManualDataEntry {
         } while (addMoreElement);
         ALLASSIGNMENTS.addAll(assignments);
         
-        
+        for (Assignment ass:assignments) {
+            if (!ass.isTeamAssignment()) {
+                DataEntryUtilities.individualAssignment(students, ass);
+            }
+        }
         
 
     }

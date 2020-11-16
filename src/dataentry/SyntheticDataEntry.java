@@ -63,8 +63,8 @@ public class SyntheticDataEntry {
         for (int i = 0; i < 10; i++) {
             students.add(new Student(getRandomFirstName(), getRandomLastName(), getRandomBirthDate(), getRandomTuitionFees()));
         }
-        RemoveDuplicates.individualAssignment(students, assignments.get(0));
-        RemoveDuplicates.teamAssignment(students, assignments.get(1), 3);
+        DataEntryUtilities.individualAssignment(students, assignments.get(0));
+        DataEntryUtilities.teamAssignment(students, assignments.get(1), 3);
         course.setStudents(students);
         ALLSTUDENTS.addAll(students);
 
@@ -98,8 +98,8 @@ public class SyntheticDataEntry {
         for (int i = 0; i < 10; i++) {
             students.add(new Student(getRandomFirstName(), getRandomLastName(), getRandomBirthDate(), getRandomTuitionFees()));
         }
-        RemoveDuplicates.individualAssignment(students, assignments.get(0));
-        RemoveDuplicates.teamAssignment(students, assignments.get(1), 2);
+        DataEntryUtilities.individualAssignment(students, assignments.get(0));
+        DataEntryUtilities.teamAssignment(students, assignments.get(1), 2);
         course.setStudents(students);
         ALLSTUDENTS.addAll(students);
 
@@ -134,8 +134,8 @@ public class SyntheticDataEntry {
             students.add(new Student(getRandomFirstName(), getRandomLastName(), getRandomBirthDate(), getRandomTuitionFees()));
         }
 
-        RemoveDuplicates.individualAssignment(students, assignments.get(0));
-        RemoveDuplicates.teamAssignment(students, assignments.get(1), 3);
+        DataEntryUtilities.individualAssignment(students, assignments.get(0));
+        DataEntryUtilities.teamAssignment(students, assignments.get(1), 3);
         course.setStudents(students);
         ALLSTUDENTS.addAll(students);
 
@@ -194,16 +194,17 @@ public class SyntheticDataEntry {
         return lastNames[random.nextInt(lastNames.length)];
     }
 
+    
     public static ArrayList<Course> getALLCOURSES() {
         return ALLCOURSES;
     }
 
     public static ArrayList<Student> getALLSTUDENTS() {
-        return RemoveDuplicates.removeDuplicates(ALLSTUDENTS);
+        return DataEntryUtilities.removeDuplicates(ALLSTUDENTS);
     }
 
     public static ArrayList<Trainer> getALLTRAINERS() {
-        return RemoveDuplicates.removeDuplicates(ALLTRAINERS);
+        return DataEntryUtilities.removeDuplicates(ALLTRAINERS);
     }
 
     public static ArrayList<Assignment> getALLASSIGNMENTS() {

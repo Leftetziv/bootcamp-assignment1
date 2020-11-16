@@ -15,7 +15,7 @@ import model.Student;
  *
  * @author Leyteris
  */
-public class RemoveDuplicates<T> {
+public class DataEntryUtilities<T> {
 
     private static Random random = new Random();
 

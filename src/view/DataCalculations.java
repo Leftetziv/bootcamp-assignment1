@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package datamanipulations;
+package view;
 
 import dataentry.ReadFromUserUtilities;
 import java.time.DayOfWeek;
