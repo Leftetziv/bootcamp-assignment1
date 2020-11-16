@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dataentry.ReadFromUserUtilities;
+import view.dataentry.ReadFromUserUtilities;
 import view.Bootcamp;
 import java.util.Scanner;
 

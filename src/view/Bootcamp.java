@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package view;
-import dataentry.ManualDataEntry;
-import dataentry.SyntheticDataEntry;
+import view.dataentry.ManualDataEntry;
+import view.dataentry.SyntheticDataEntry;
 import java.util.ArrayList;
 import java.util.Scanner;
 import model.*;

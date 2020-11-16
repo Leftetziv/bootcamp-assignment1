@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dataentry;
+package view.dataentry;
 
-import static dataentry.ReadFromUserUtilities.readString;
+import static view.dataentry.ReadFromUserUtilities.readString;
 import java.util.ArrayList;
 import java.util.Random;
 import model.Assignment;

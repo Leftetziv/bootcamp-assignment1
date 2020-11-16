@@ -5,7 +5,7 @@
  */
 package view;
 
-import dataentry.ReadFromUserUtilities;
+import view.dataentry.ReadFromUserUtilities;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
