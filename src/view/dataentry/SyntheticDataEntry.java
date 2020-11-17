@@ -11,7 +11,6 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.IntStream;
 import model.Assignment;
 import model.Course;
 import model.Student;
@@ -63,8 +62,9 @@ public class SyntheticDataEntry {
         assignments.add(new Assignment("Spring Boot", "Assignment in BackEnd", null, -1, -1, LocalDateTime.of(2021, 4, 10, 23, 59), 50, 100, true));
         ALLASSIGNMENTS.addAll(assignments);
 
+        
         students = new ArrayList<>();
-        students.add(new Student("Aaaaa", "Bbbbb", LocalDate.of(2020, 11, 13), 2000)); //for testing students on duplicate courses
+        students.add(new Student("Aaaaa", "Bbbbb", LocalDate.of(2020, 11, 13), 2000));                  //FOR TESTING STUDENTS IN MULTIPLE COURSES
         for (int i = 0; i < 22; i++) {
             students.add(new Student(getRandomFirstName(), getRandomLastName(), getRandomBirthDate(), getRandomTuitionFees()));
         }
@@ -103,7 +103,7 @@ public class SyntheticDataEntry {
         }
         DataEntryUtilities.assignStudentsToCourse(ALLCOURSES.get(0), ALLSTUDENTS, assigns);
         assigns.clear();
-        assigns.add(1);      //for duplicate testing
+        assigns.add(1);                                                                                     ////FOR TESTING STUDENTS IN MULTIPLE COURSES
         for (int i = 9; i < 16; i++) {
             assigns.add(i);
         }

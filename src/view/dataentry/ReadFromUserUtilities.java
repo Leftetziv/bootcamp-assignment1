@@ -8,6 +8,9 @@ package view.dataentry;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -38,6 +41,38 @@ public class ReadFromUserUtilities {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Wrong input, input a number from " + start + " to " + end + ", or q to quit");
+            }
+        } while (true);
+    }
+
+    public static ArrayList<Integer> readListOfNumbersOrQuit(int start, int end) {
+        ArrayList<Integer> numberList = new ArrayList<>();
+        String answerStr;
+        List<String> splittedStr;
+
+        do {
+            answerStr = sc.nextLine();
+
+            if ("q".equalsIgnoreCase(answerStr)) {
+                numberList.add(-1);
+                return numberList;
+            }
+
+            try {
+                splittedStr = Arrays.asList(answerStr.split(","));
+                splittedStr.stream().forEach(String::trim);
+
+                for (String s : splittedStr) {
+                    numberList.add(Integer.parseInt(s));
+                }
+
+                if (numberList.stream().anyMatch(i -> i >= start) && numberList.stream().anyMatch(i -> i <= end)) {
+                    return numberList;
+                } else {
+                    System.out.println("Wrong input, input a numbers from " + start + " to " + end);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Wrong input, input a number from " + start + " to " + end + ", or q to quit. Seperate multiple values by a comma");
             }
         } while (true);
     }

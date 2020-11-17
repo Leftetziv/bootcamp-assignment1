@@ -18,9 +18,9 @@ import model.*;
 public class Bootcamp {
 
     private ArrayList<Course> courses;
-    private ArrayList<Student> students;              //all students without duplicates
-    private ArrayList<Trainer> trainers;              //all trainers without duplicates
-    private ArrayList<Assignment> assignments;        //list of all assignments without grades
+    private ArrayList<Student> students;              
+    private ArrayList<Trainer> trainers;              
+    private ArrayList<Assignment> assignments;        //GENERAL DESCRIPTION OF ASSIGMENTS (WITHOUT STUDENT GRADES)
 
     public void DataEntry() {
 
