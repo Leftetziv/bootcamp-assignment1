@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+
 import view.dataentry.ManualDataEntry;
 import view.dataentry.SyntheticDataEntry;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class Bootcamp {
 //        answer = "syn";
         answer = sc.nextLine();
         while (!answer.equalsIgnoreCase("man") && !answer.equalsIgnoreCase("syn")) {
-            System.out.println("Select MANual or SYNthetic data entry");
+            System.out.println("Select MAN or SYN data entry");
             answer = sc.nextLine();
         }
         if (answer.equalsIgnoreCase("syn")) {
@@ -43,8 +44,7 @@ public class Bootcamp {
             System.out.println("Created synthetic data");
         } else if (answer.equalsIgnoreCase("man")) {
             ManualDataEntry.createManData();
-            
-            
+
             System.out.println("manual");
         }
     }

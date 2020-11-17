@@ -13,8 +13,10 @@ import java.util.Objects;
  *
  * @author Leyteris
  */
-public class Assignment {           //Θεωρω οτι title ειναι identifier καθε assignment
+public class Assignment {           
 
+    private long id;
+    private static long count = 0;
     private String title;
     private String description;
     private LocalDateTime subDateTime;
@@ -28,6 +30,8 @@ public class Assignment {           //Θεωρω οτι title ειναι identif
     ArrayList<Student> assignedStudents;
 
     public Assignment() {
+        count++;
+        this.id = count;
     }
 
     public Assignment(String title, String description, LocalDateTime subDateTime, int oralMark, int totalMark, LocalDateTime dueDateTime, int maxOralMark, int maxTotalMark, boolean teamAssignment) {
@@ -41,6 +45,8 @@ public class Assignment {           //Θεωρω οτι title ειναι identif
         this.maxTotalMark = maxTotalMark;
         this.teamAssignment = teamAssignment;
         this.assignedStudents = new ArrayList<>();
+        count++;
+        this.id = count;
     }
 
     public String getTitle() {
@@ -121,12 +127,16 @@ public class Assignment {           //Θεωρω οτι title ειναι identif
 
     public void setAssignedStudents(ArrayList<Student> assignedStudents) {
         this.assignedStudents = assignedStudents;
-    }    
-    
+    }
+
+    public long getId() {
+        return id;
+    }
+
     public void toStringStudent() {
         String answer = "";
         answer += title + ": " + description;
-        if (subDateTime!=null) {
+        if (subDateTime != null) {
             answer += ", submitted on " + subDateTime + ", Oral mark: " + oralMark + " Total Mark: " + totalMark;
             if (subDateTime.isAfter(dueDateTime)) {
                 answer += ". Overdue!";
@@ -135,14 +145,14 @@ public class Assignment {           //Θεωρω οτι title ειναι identif
             answer += ", not submitted yet";
         }
         System.out.print(answer);
-        
-        for (Student s:assignedStudents) {
-            System.out.print(" ("+s.getFirstName()+" "+s.getLastName() +")");
+
+        for (Student s : assignedStudents) {
+            System.out.print(" (" + s.getFirstName() + " " + s.getLastName() + ")");
         }
-        
+
         System.out.println();
     }
-    
+
     public void toStringCourse() {
         System.out.println(title + ": " + description + ", due to " + dueDateTime.toString()
                 + ". Max Oral mark: " + maxOralMark + ", max Total Mark: " + maxTotalMark);
@@ -150,24 +160,24 @@ public class Assignment {           //Θεωρω οτι title ειναι identif
 
     @Override
     public boolean equals(Object obj) {
-        if (this==obj) {
+        if (this == obj) {
             return true;
         }
         if (obj == null) {
             return false;
         }
-        if (this.getClass() !=  obj.getClass()) {
+        if (this.getClass() != obj.getClass()) {
             return false;
-        } 
-        
+        }
+
         Assignment ass = (Assignment) obj;
-        return title.equalsIgnoreCase(ass.title);
+        return this.id == ass.getId();
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.title);
+        int hash = 3;
+        hash = 29 * hash + (int) (this.id ^ (this.id >>> 32));
         return hash;
     }
 

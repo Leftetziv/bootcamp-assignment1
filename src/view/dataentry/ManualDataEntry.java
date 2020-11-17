@@ -125,7 +125,7 @@ public class ManualDataEntry {
         
         for (Assignment ass:assignments) {
             if (!ass.isTeamAssignment()) {
-                DataEntryUtilities.individualAssignment(students, ass);
+//                DataEntryUtilities.individualAssignment(students, ass);
             }
         }
         

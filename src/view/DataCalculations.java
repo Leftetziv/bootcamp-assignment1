@@ -56,19 +56,19 @@ public class DataCalculations {
                         forEach(System.out::println);
                 System.out.println("");
             } else if ("assignments".equals(element)) {
-                List<Assignment> assignments = new ArrayList<>();
+                List<Assignment> allAssignments = new ArrayList<>();
                 courses.get(answerInt - 1).
                         getStudents().stream().
                         forEach(i -> i.getAssignments().
-                        forEach(assignments::add));
+                        forEach(allAssignments::add));
 
                 List<Assignment> individualAssignments;
                 List<Assignment> teamAssignments;
 
-                individualAssignments = assignments.stream().
+                individualAssignments = allAssignments.stream().
                         filter(i -> !i.isTeamAssignment()).
                         collect(Collectors.toList());
-                teamAssignments = assignments.stream().
+                teamAssignments = allAssignments.stream().
                         filter(i -> i.isTeamAssignment()).
                         collect(Collectors.toList());
 
@@ -92,7 +92,7 @@ public class DataCalculations {
         return getStudentList(courses, false);
     }
 
-    private static ArrayList<Student> getStudentList(ArrayList<Course> courses, boolean duplicate) {
+    private static ArrayList<Student> getStudentList(ArrayList<Course> courses, boolean duplicateStudent) {
         ArrayList<Student> mixedStudents = new ArrayList<>();
         ArrayList<Student> distinctStudents = new ArrayList<>();
         ArrayList<Student> duplicateStudents = new ArrayList<>();
@@ -111,7 +111,7 @@ public class DataCalculations {
             }
         }
 
-        return (duplicate ? duplicateStudents : distinctStudents);
+        return (duplicateStudent ? duplicateStudents : distinctStudents);
     }
 
     public static void printAssignmentsPerStudent(ArrayList<Student> students, ArrayList<Course> courses) {
@@ -123,27 +123,30 @@ public class DataCalculations {
             System.out.println(studentCounter + " - " + c);
             studentCounter++;
         }
-
+     
         answerInt = ReadFromUserUtilities.readNumberOrQuit(1, studentCounter - 1);
 
         if (answerInt != -1) {
             Student student = students.get(answerInt - 1);
-            if (!getMultiCourseStudents(courses).contains(student)) {
-                System.out.println("Showing student's assginment:");
-                student.getAssignments().stream().forEach(Assignment::toStringStudent);
-                System.out.println();
-            } else {
-                System.out.println("Showing student's assginment (multiple course student):");
-                for (Course c : courses) {
-                    int studentIndex = c.getStudents().indexOf(student);
-                    if (studentIndex != -1) {
-                        System.out.println(c.toString() + ":");
-                        c.getStudents().get(studentIndex).getAssignments().stream().forEach(Assignment::toStringStudent);
-                        System.out.println();
-                    }
-                }
-                System.out.println();
-            }
+            
+            student.getAssignments().stream().forEach(Assignment::toStringStudent);
+            
+//            if (!getMultiCourseStudents(courses).contains(student)) {
+//                System.out.println("Showing student's assginment:");
+//                student.getAssignments().stream().forEach(Assignment::toStringStudent);
+//                System.out.println();
+//            } else {
+//                System.out.println("Showing student's assginment (multiple course student):");
+//                for (Course c : courses) {
+//                    int studentIndex = c.getStudents().indexOf(student);
+//                    if (studentIndex != -1) {
+//                        System.out.println(c.toString() + ":");
+//                        c.getStudents().get(studentIndex).getAssignments().stream().forEach(Assignment::toStringStudent);
+//                        System.out.println();
+//                    }
+//                }
+//                System.out.println();
+//            }
         }
     }
 

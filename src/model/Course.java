@@ -14,6 +14,8 @@ import java.util.ArrayList;
  */
 public class Course {
 
+    private long id;
+    private static long count = 0;
     private String title;
     private String stream;
     private String type;
@@ -24,6 +26,18 @@ public class Course {
     private ArrayList<Trainer> trainers;
 
     public Course() {
+        count++;
+        this.id = count;
+    }
+
+    public Course(String title, String stream, String type, LocalDate startDate, LocalDate endDate) {
+        this.title = title;
+        this.stream = stream;
+        this.type = type;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        count++;
+        this.id = count;
     }
 
     public Course(String title, String stream, String type, LocalDate startDate, LocalDate endDate, ArrayList<Student> students, ArrayList<Trainer> trainers) {
@@ -33,7 +47,9 @@ public class Course {
         this.startDate = startDate;
         this.endDate = endDate;
         this.students = students;
-        this.trainers = trainers;       
+        this.trainers = trainers;    
+        count++;
+        this.id = count;
     }
 
     public String getTitle() {
@@ -92,6 +108,10 @@ public class Course {
         this.trainers = trainers;
     }
 
+    public long getId() {
+        return id;
+    }
+    
     @Override
     public String toString() {
         return title + " " + stream + " " + type

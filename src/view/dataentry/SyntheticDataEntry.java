@@ -11,6 +11,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.IntStream;
 import model.Assignment;
 import model.Course;
 import model.Student;
@@ -30,116 +31,162 @@ public class SyntheticDataEntry {
 
     public static void createSynData() {
 
-        Course course;
+        ArrayList<Course> courses;
         ArrayList<Trainer> trainers;
         ArrayList<Student> students;
         ArrayList<Assignment> assignments;
+        ArrayList<Integer> assigns;
 
-        /**
-         * *************************************** setting course details 1 ***************************************************
-         */
-        course = new Course();
-        course.setTitle("CB10");
-        course.setStream("Java");
-        course.setType("Part Time");
-        course.setStartDate(LocalDate.of(2020, 10, 5));
-        course.setEndDate(LocalDate.of(2021, 03, 20));
+        courses = new ArrayList<>();
+        courses.add(new Course("CB10", "Java", "Part Time", LocalDate.of(2020, 10, 5), LocalDate.of(2021, 03, 20)));
+        courses.add(new Course("CB10", "Javascript", "Full Time", LocalDate.of(2020, 10, 5), LocalDate.of(2021, 03, 20)));
+        courses.add(new Course("CB11", "Java", "Full Time", LocalDate.of(2020, 10, 5), LocalDate.of(2021, 03, 20)));
+        ALLCOURSES.addAll(courses);
 
         trainers = new ArrayList<>();
         trainers.add(new Trainer("Kostas", "Kostou", "Java"));
         trainers.add(new Trainer("Nikos", "Nikou", "Html"));
-        trainers.add(new Trainer("Giannis", "Giannou", "Css"));
+        trainers.add(new Trainer("Giorgos", "Giorgou", "Java"));
+        trainers.add(new Trainer("Aggelos", "Aggelou", "Spring Boot"));
         trainers.add(new Trainer("Takis", "Takou", "MySql"));
-        course.setTrainers(trainers);
+        trainers.add(new Trainer("Vaggelis", "Vaggelou", "Js"));
+        trainers.add(new Trainer("Giannis", "Giannou", "Css"));
+        trainers.add(new Trainer("Dimitris", "Dimitriou", "MS Sql"));
         ALLTRAINERS.addAll(trainers);
 
         assignments = new ArrayList<>();
         assignments.add(new Assignment("Classes", "Assignment in Classes", null, -1, -1, LocalDateTime.of(2020, 11, 10, 23, 59), 50, 100, false));
         assignments.add(new Assignment("FrontEnd", "Assignment in FrontEnd", null, -1, -1, LocalDateTime.of(2021, 2, 10, 23, 59), 50, 100, true));
-        ALLASSIGNMENTS.addAll(assignments);
-
-        students = new ArrayList<>();
-        students.add(new Student("Aaaaa", "Bbbbb", LocalDate.of(2020, 11, 13), 2000)); //for testing students on duplicate courses
-        for (int i = 0; i < 10; i++) {
-            students.add(new Student(getRandomFirstName(), getRandomLastName(), getRandomBirthDate(), getRandomTuitionFees()));
-        }
-        DataEntryUtilities.individualAssignment(students, assignments.get(0));
-        DataEntryUtilities.teamAssignment(students, assignments.get(1), 3);
-        course.setStudents(students);
-        ALLSTUDENTS.addAll(students);
-
-        ALLCOURSES.add(course);
-
-        /**
-         * *************************************** setting course details 2 ***************************************************
-         */
-        course = new Course();
-        course.setTitle("CB10");
-        course.setStream("Javascript");
-        course.setType("Full Time");
-        course.setStartDate(LocalDate.of(2020, 10, 5));
-        course.setEndDate(LocalDate.of(2020, 12, 25));
-
-        trainers = new ArrayList<>();
-        trainers.add(new Trainer("Giorgos", "Giorgou", "Java"));
-        trainers.add(new Trainer("Nikos", "Nikou", "Html"));
-        trainers.add(new Trainer("Aggelos", "Aggelou", "Spring Boot"));
-        trainers.add(new Trainer("Takis", "Takou", "MySql"));
-        course.setTrainers(trainers);
-        ALLTRAINERS.addAll(trainers);
-
-        assignments = new ArrayList<>();
         assignments.add(new Assignment("Functional", "Assignment in Functional Programming", null, -1, -1, LocalDateTime.of(2020, 11, 10, 23, 23, 59), 50, 100, false));
         assignments.add(new Assignment("Node.js", "Assignment in BackEnd", null, -1, -1, LocalDateTime.of(2020, 12, 5, 23, 59), 50, 100, true));
-        ALLASSIGNMENTS.addAll(assignments);
-
-        students = new ArrayList<>();
-        students.add(new Student("Aaaaa", "Bbbbb", LocalDate.of(2020, 11, 13), 2000)); //for testing students on duplicate courses
-        for (int i = 0; i < 10; i++) {
-            students.add(new Student(getRandomFirstName(), getRandomLastName(), getRandomBirthDate(), getRandomTuitionFees()));
-        }
-        DataEntryUtilities.individualAssignment(students, assignments.get(0));
-        DataEntryUtilities.teamAssignment(students, assignments.get(1), 2);
-        course.setStudents(students);
-        ALLSTUDENTS.addAll(students);
-
-        ALLCOURSES.add(course);
-
-        /**
-         * *************************************** setting course details 3 ***************************************************
-         */
-        course = new Course();
-        course.setTitle("CB11");
-        course.setStream("Java");
-        course.setType("Full Time");
-        course.setStartDate(LocalDate.of(2021, 1, 10));
-        course.setEndDate(LocalDate.of(2021, 4, 25));
-
-        trainers = new ArrayList<>();
-        trainers.add(new Trainer("Vaggelis", "Vaggelou", "Js"));
-        trainers.add(new Trainer("Nikos", "Nikou", "Html"));
-        trainers.add(new Trainer("Giannis", "Giannou", "Css"));
-        trainers.add(new Trainer("Dimitris", "Dimitriou", "MS Sql"));
-        course.setTrainers(trainers);
-        ALLTRAINERS.addAll(trainers);
-
-        assignments = new ArrayList<>();
         assignments.add(new Assignment("JSP/Servlets", "Assignment in Servlets", null, -1, -1, LocalDateTime.of(2021, 2, 10, 23, 59), 50, 100, false));
         assignments.add(new Assignment("Spring Boot", "Assignment in BackEnd", null, -1, -1, LocalDateTime.of(2021, 4, 10, 23, 59), 50, 100, true));
         ALLASSIGNMENTS.addAll(assignments);
 
         students = new ArrayList<>();
-//        students.add(new Student("Aaaaa", "Bbbbb", LocalDate.of(1989, 2, 13), 2000)); //for testing students on duplicate courses
-        for (int i = 0; i < 10; i++) {
+        students.add(new Student("Aaaaa", "Bbbbb", LocalDate.of(2020, 11, 13), 2000)); //for testing students on duplicate courses
+        for (int i = 0; i < 22; i++) {
             students.add(new Student(getRandomFirstName(), getRandomLastName(), getRandomBirthDate(), getRandomTuitionFees()));
         }
-
-        DataEntryUtilities.individualAssignment(students, assignments.get(0));
-        DataEntryUtilities.teamAssignment(students, assignments.get(1), 3);
-        course.setStudents(students);
         ALLSTUDENTS.addAll(students);
 
-        ALLCOURSES.add(course);
+        /**
+         * **************************ASSIGNING TRAINERS TO
+         * COURSES*****************
+         */
+        assigns = new ArrayList<>();
+        assigns.add(1);
+        assigns.add(2);
+        assigns.add(5);
+        assigns.add(7);
+        DataEntryUtilities.assignTrainersToCourse(ALLCOURSES.get(0), ALLTRAINERS, assigns);
+        assigns.clear();
+        assigns.add(2);
+        assigns.add(7);
+        assigns.add(6);
+        assigns.add(8);
+        DataEntryUtilities.assignTrainersToCourse(ALLCOURSES.get(1), ALLTRAINERS, assigns);
+        assigns.clear();
+        assigns.add(2);
+        assigns.add(7);
+        assigns.add(4);
+        assigns.add(3);
+        DataEntryUtilities.assignTrainersToCourse(ALLCOURSES.get(2), ALLTRAINERS, assigns);
+        assigns.clear();
+
+        /**
+         * **************************ASSIGNING STUDENTS TO
+         * COURSES*****************
+         */
+        for (int i = 1; i < 9; i++) {
+            assigns.add(i);
+        }
+        DataEntryUtilities.assignStudentsToCourse(ALLCOURSES.get(0), ALLSTUDENTS, assigns);
+        assigns.clear();
+        assigns.add(1);      //for duplicate testing
+        for (int i = 9; i < 16; i++) {
+            assigns.add(i);
+        }
+        DataEntryUtilities.assignStudentsToCourse(ALLCOURSES.get(1), ALLSTUDENTS, assigns);
+        assigns.clear();
+        for (int i = 16; i < 24; i++) {
+            assigns.add(i);
+        }
+        DataEntryUtilities.assignStudentsToCourse(ALLCOURSES.get(2), ALLSTUDENTS, assigns);
+        assigns.clear();
+
+        /**
+         * **************************ASSIGNING INDIVIDUAL ASSIGMENTS TO THE
+         * STUDENTS OF THE COURSES*****************
+         */
+        assigns.add(1);
+        DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(0).getStudents(), ALLASSIGNMENTS, assigns);
+        assigns.clear();
+        assigns.add(3);
+        DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(1).getStudents(), ALLASSIGNMENTS, assigns);
+        assigns.clear();
+        assigns.add(5);
+        DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(2).getStudents(), ALLASSIGNMENTS, assigns);
+        assigns.clear();
+
+        /**
+         * **************************ASSIGNING GROUP ASSIGMENTS TO THE STUDENTS
+         * OF THE COURSES*****************
+         */
+        assigns.add(2);
+        int courseNo = 0;
+        ArrayList<Student> group = new ArrayList<>();
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(0));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(1));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(2));
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS, assigns);
+        group = new ArrayList<>();
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(3));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(4));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(5));
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS, assigns);
+        group = new ArrayList<>();
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(6));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(7));
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS, assigns);
+        assigns.clear();
+
+        assigns.add(4);
+        courseNo = 1;
+        group = new ArrayList<>();
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(0));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(1));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(2));
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS, assigns);
+        group = new ArrayList<>();
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(3));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(4));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(5));
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS, assigns);
+        group = new ArrayList<>();
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(6));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(7));
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS, assigns);
+        assigns.clear();
+
+        assigns.add(6);
+        courseNo = 2;
+        group = new ArrayList<>();
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(0));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(1));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(2));
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS, assigns);
+        group = new ArrayList<>();
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(3));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(4));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(5));
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS, assigns);
+        group = new ArrayList<>();
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(6));
+        group.add(ALLCOURSES.get(courseNo).getStudents().get(7));
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS, assigns);
+        assigns.clear();
+
     }
 
     private static LocalDate getRandomBirthDate() {
@@ -194,17 +241,16 @@ public class SyntheticDataEntry {
         return lastNames[random.nextInt(lastNames.length)];
     }
 
-    
     public static ArrayList<Course> getALLCOURSES() {
         return ALLCOURSES;
     }
 
     public static ArrayList<Student> getALLSTUDENTS() {
-        return DataEntryUtilities.removeDuplicates(ALLSTUDENTS);
+        return ALLSTUDENTS;
     }
 
     public static ArrayList<Trainer> getALLTRAINERS() {
-        return DataEntryUtilities.removeDuplicates(ALLTRAINERS);
+        return ALLTRAINERS;
     }
 
     public static ArrayList<Assignment> getALLASSIGNMENTS() {

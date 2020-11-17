@@ -13,16 +13,19 @@ import java.util.Objects;
  *
  * @author Leyteris
  */
-public class Student {                  //Θεωρω οτι ονομα+επωνυμο+dateOfBirth+tuitionFees ειναι identifier καθε student
+public class Student {                
 
-    private String firstName; 
+    private long id;
+    private static long count = 0;
+    private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
     private int tuitionFees;
-
     private ArrayList<Assignment> assignments;
 
     public Student() {
+        count++;
+        this.id = count;
     }
 
     public Student(String firstName, String lastName, LocalDate dateOfBirth, int tuitionFees) {
@@ -31,6 +34,8 @@ public class Student {                  //Θεωρω οτι ονομα+επων�
         this.dateOfBirth = dateOfBirth;
         this.tuitionFees = tuitionFees;
         assignments = new ArrayList<>();
+        count++;
+        this.id = count;
     }
 
     public String getFirstName() {
@@ -73,6 +78,10 @@ public class Student {                  //Θεωρω οτι ονομα+επων�
         this.assignments = assignments;
     }
 
+    public long getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return firstName + " " + lastName + " (" + dateOfBirth.toString() + ") : " + tuitionFees + "€";
@@ -80,29 +89,23 @@ public class Student {                  //Θεωρω οτι ονομα+επων�
 
     @Override
     public boolean equals(Object obj) {
-        if (this==obj) {
+        if (this == obj) {
             return true;
         }
         if (obj == null) {
             return false;
         }
-        if (this.getClass() !=  obj.getClass()) {
+        if (this.getClass() != obj.getClass()) {
             return false;
-        }  
+        }
         Student s = (Student) obj;
-        return firstName.equalsIgnoreCase(s.firstName)
-                && lastName.equalsIgnoreCase(s.lastName)
-                && dateOfBirth.equals(s.dateOfBirth)
-                && tuitionFees==s.tuitionFees;
+        return this.id == s.getId();
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.firstName);
-        hash = 17 * hash + Objects.hashCode(this.lastName);
-        hash = 17 * hash + Objects.hashCode(this.dateOfBirth);
-        hash = 17 * hash + Float.floatToIntBits(this.tuitionFees);
+        int hash = 5;
+        hash = 83 * hash + (int) (this.id ^ (this.id >>> 32));
         return hash;
     }
 
