@@ -37,7 +37,7 @@ public class DataEntryUtilities {
         ArrayList<Trainer> trainers = new ArrayList<>();
 
         for (int i : trainersAssigns) {
-            trainers.add(ALLTRAINERS.get(i - 1));
+            trainers.add(ALLTRAINERS.get(i));
         }
 
         course.setTrainers(trainers);
@@ -47,7 +47,7 @@ public class DataEntryUtilities {
         ArrayList<Student> students = new ArrayList<>();
 
         for (int i : studentsAssigns) {
-            students.add(ALLSTUDENTS.get(i - 1));
+            students.add(ALLSTUDENTS.get(i));
         }
 
         course.setStudents(students);
@@ -57,7 +57,7 @@ public class DataEntryUtilities {
         int assignmentsCount;
 
         for (int i : assignmentsAssigns) {
-            Assignment courseAssignment = ALLASSIGNMENTS.get(i-1);
+            Assignment courseAssignment = ALLASSIGNMENTS.get(i);
 
             for (int k = 0; k < students.size(); k++) {
                 Assignment assigment = new Assignment(courseAssignment.getTitle(), courseAssignment.getDescription(),
@@ -72,15 +72,12 @@ public class DataEntryUtilities {
         }
     }
 
-    static void assignGroupAssignmentsToCourseStudents(ArrayList<Student> students, ArrayList<Assignment> ALLASSIGNMENTS, ArrayList<Integer> assignmentsAssigns) {
+    static void assignGroupAssignmentsToCourseStudents(ArrayList<Student> students, Assignment assignmentOriginal) {
         int assignmentsCount;
 
-        for (int i : assignmentsAssigns) {
-            Assignment courseAssignment = ALLASSIGNMENTS.get(i-1);
-
-            Assignment assigment = new Assignment(courseAssignment.getTitle(), courseAssignment.getDescription(),
-                        getRandomSubmissionDate(courseAssignment.getDueDateTime()), random.nextInt(courseAssignment.getMaxOralMark()), random.nextInt(courseAssignment.getMaxTotalMark()),
-                        courseAssignment.getDueDateTime(), courseAssignment.getMaxOralMark(), courseAssignment.getMaxTotalMark(), true);
+            Assignment assigment = new Assignment(assignmentOriginal.getTitle(), assignmentOriginal.getDescription(),
+                        getRandomSubmissionDate(assignmentOriginal.getDueDateTime()), random.nextInt(assignmentOriginal.getMaxOralMark()), random.nextInt(assignmentOriginal.getMaxTotalMark()),
+                        assignmentOriginal.getDueDateTime(), assignmentOriginal.getMaxOralMark(), assignmentOriginal.getMaxTotalMark(), true);
             
             for (int k = 0; k < students.size(); k++) {
                 students.get(k).getAssignments().add(assigment);
@@ -88,6 +85,6 @@ public class DataEntryUtilities {
                 assignmentsCount = students.get(k).getAssignments().size();
                 students.get(k).getAssignments().get(assignmentsCount - 1).getAssignedStudents().add(students.get(k));
             }
-        }
+        
     }
 }

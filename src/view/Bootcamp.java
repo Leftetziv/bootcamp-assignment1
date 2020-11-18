@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import view.dataentry.ManualDataEntry;
 import view.dataentry.SyntheticDataEntry;
 import java.util.ArrayList;
@@ -20,15 +22,17 @@ public class Bootcamp {
     private ArrayList<Course> courses;
     private ArrayList<Student> students;              
     private ArrayList<Trainer> trainers;              
-    private ArrayList<Assignment> assignments;        //GENERAL DESCRIPTION OF ASSIGMENTS (WITHOUT STUDENT GRADES)
-
+    private ArrayList<Assignment> assignments;     //GENERAL DESCRIPTION OF ASSIGMENTS (not the objects assigment of each student!)
+                                                   //TO GET EVERY STUDENT ASSIGNMENT WE MUST ITERATE FROM EACH COURSE->STUDENTS->ASSIGNMENTS
     public void DataEntry() {
 
-        Scanner sc = new Scanner(System.in);
+        
+        Scanner sc =new Scanner(System.in);   
+         
         System.out.println("Manual data entry or synthetic data? (man/syn)");
         String answer;
-//        answer = "syn";
-        answer = sc.nextLine();
+        answer = "man";
+//        answer = sc.nextLine();
         while (!answer.equalsIgnoreCase("man") && !answer.equalsIgnoreCase("syn")) {
             System.out.println("Select MAN or SYN data entry");
             answer = sc.nextLine();
@@ -43,9 +47,14 @@ public class Bootcamp {
 
             System.out.println("Created synthetic data");
         } else if (answer.equalsIgnoreCase("man")) {
-            ManualDataEntry.createManData();
-
             System.out.println("manual");
+            ManualDataEntry.createManData();
+            
+            courses = ManualDataEntry.getALLCOURSES();
+            students = ManualDataEntry.getALLSTUDENTS();
+            trainers = ManualDataEntry.getALLTRAINERS();
+            assignments = ManualDataEntry.getALLASSIGNMENTS();
+            
         }
     }
 

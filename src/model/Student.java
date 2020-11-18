@@ -23,6 +23,7 @@ public class Student {
     private ArrayList<Assignment> assignments;
 
     public Student() {
+        assignments = new ArrayList<>();
         count++;
         this.id = count;
     }

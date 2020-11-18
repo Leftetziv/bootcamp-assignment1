@@ -29,6 +29,7 @@ public class Assignment {
     ArrayList<Student> assignedStudents;
 
     public Assignment() {
+        this.assignedStudents = new ArrayList<>();
         count++;
         this.id = count;
     }

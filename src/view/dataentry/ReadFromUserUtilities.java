@@ -5,6 +5,8 @@
  */
 package view.dataentry;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,7 +21,18 @@ import java.util.Scanner;
  */
 public class ReadFromUserUtilities {
 
-    static Scanner sc = new Scanner(System.in);
+    
+//    private static Scanner sc = new Scanner(System.in);
+    
+    public static Scanner sc;            //for input testing
+    static {
+        try {
+            File text = new File("input.txt");
+            sc = new Scanner(text);
+        } catch (FileNotFoundException e) {
+            sc = new Scanner(System.in);
+        }
+    }
 
     public static int readNumberOrQuit(int start, int end) {
         String answerStr;
@@ -134,7 +147,7 @@ public class ReadFromUserUtilities {
             try {
                 return LocalDateTime.parse(answerStr, formatter);
             } catch (Exception e) {
-                System.out.println("Wrong input, enter a date in format YYYY-MM-DD HH-MM");
+                System.out.println("Wrong input, enter a date in format YYYY-MM-DD HH:MM");
             }
         } while (true);
     }

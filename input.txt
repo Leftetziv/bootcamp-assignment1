@@ -1,0 +1,46 @@
+CB10
+Java
+Part Time
+2020-02-02
+2020-06-02
+yes
+Kostas
+Kostou
+Java
+yes
+Nikos
+Nikou
+Html
+no
+yes
+student1
+sudentlastname1
+1989-02-02
+1234
+yes
+student2
+sudentlastname2
+1990-02-02
+2345
+yes
+student3
+sudentlastname3
+1991-02-02
+2346
+no
+yes
+Classes
+Assignment in Classes
+2020-03-02 23:59
+50
+100
+no
+yes
+FrontEnd
+Assignment in FrontEnd
+2020-04-02 23:59
+40
+70
+no
+1,2
+1
