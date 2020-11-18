@@ -150,7 +150,7 @@ public class ManualDataEntry {
 
                     List<Integer> reducedExistingAssignmentsToAssign = ReadFromUserUtilities.readListOfNumbersOrQuit(1, assignmentCounter - 1);
                     reducedExistingAssignmentsToAssign = reducedExistingAssignmentsToAssign.stream().map(i -> i - 1).collect(Collectors.toList());
-                    
+
                     ArrayList<Integer> ExistingAssignmentsToAssign = new ArrayList<>();
                     for (Integer i : reducedExistingAssignmentsToAssign) {
                         Assignment as = individualAssignmentsOnly.get(i);
@@ -211,19 +211,25 @@ public class ManualDataEntry {
                 groupAssignmentsToAssignToStudents.add(ALLASSIGNMENTS.indexOf(assignment));
                 System.out.println("Do you want to add new group assignment for the course? (yes/no)");
             }
+            ReadFromUserUtilities.sc = new Scanner(System.in); //reseting the scanner from keaboard for testing
 
-            ArrayList<Student> reducedStudentForGroup = ALLCOURSES.get(courseCounter).getStudents();
+            
+            
+            ArrayList<Student> courseStudents = ALLCOURSES.get(courseCounter).getStudents();
             System.out.println("Groups assignments:");
             for (Integer i : groupAssignmentsToAssignToStudents) {
                 Assignment assignment = ALLASSIGNMENTS.get(i);
-                while (!reducedStudentForGroup.isEmpty()) {
+                ArrayList<Student> studentsAllreadyAssigned = new ArrayList<>();
+                while (studentsAllreadyAssigned.size() != courseStudents.size()) {
                     System.out.println("Assignment: " + assignment.getTitle());
                     System.out.println("Enter the numbers of the students below, to assign them all to a group assignment as a team. "
                             + "Seperate the values by commas, like in the following example: 5,8,9,11");
 
                     int studentCounter = 1;
-                    for (Student t : reducedStudentForGroup) {
-                        System.out.println(studentCounter + " - " + t);
+                    for (Student t : courseStudents) {
+                        if (!studentsAllreadyAssigned.contains(t)) {
+                            System.out.println(studentCounter + " - " + t);
+                        }
                         studentCounter++;
                     }
 
@@ -235,17 +241,15 @@ public class ManualDataEntry {
                         continue;
                     }
 
-                    DataEntryUtilities.assignGroupAssignmentsToCourseStudents(reducedStudentForGroup, assignment);
-
-                    ArrayList<Student> studentToRemove = new ArrayList<>();
-                    for (int k : group) {
-                        studentToRemove.add(reducedStudentForGroup.get(k));
+                    ArrayList<Student> studentGrouping = new ArrayList<>();
+                    for (int k = 0; k < group.size(); k++) { 
+                        studentsAllreadyAssigned.add(courseStudents.get(group.get(k)));
+                        studentGrouping.add(courseStudents.get(group.get(k)));
                     }
 
-                    reducedStudentForGroup.removeAll(studentToRemove);
+                    DataEntryUtilities.assignGroupAssignmentsToCourseStudents(studentGrouping, assignment);
                 }
             }
-            ReadFromUserUtilities.sc = new Scanner(System.in); //reseting the scanner from keaboard for testing
 
             System.out.println("Add more course?( yes/no)");
         } while (ReadFromUserUtilities.readYesOrNo()); //select the students of the each group

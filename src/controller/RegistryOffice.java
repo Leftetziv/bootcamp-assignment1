@@ -40,7 +40,7 @@ public class RegistryOffice {
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.DataEntry();
 
-        ReadFromUserUtilities.sc = new Scanner(System.in); //reseting the scanner from keaboard for testing
+//        ReadFromUserUtilities.sc = new Scanner(System.in); //reseting the scanner from keaboard for testing
         
         do {
             System.out.println(choiceMenu);

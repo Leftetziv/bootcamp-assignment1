@@ -70,10 +70,8 @@ public class SyntheticDataEntry {
         }
         ALLSTUDENTS.addAll(students);
 
-        /**
-         * **************************ASSIGNING TRAINERS TO
-         * COURSES*****************
-         */
+   
+        //*************************ASSIGNING TRAINERS TO COURSES*************************************
         assigns = new ArrayList<>();
         assigns.add(0);
         assigns.add(1);
@@ -94,10 +92,7 @@ public class SyntheticDataEntry {
         DataEntryUtilities.assignTrainersToCourse(ALLCOURSES.get(2), ALLTRAINERS, assigns);
         assigns.clear();
 
-        /**
-         * **************************ASSIGNING STUDENTS TO
-         * COURSES*****************
-         */
+        //*************************************************ASSIGNING STUDENTS TO COURSES****************************************
         for (int i = 0; i < 8; i++) {
             assigns.add(i);
         }
@@ -115,10 +110,8 @@ public class SyntheticDataEntry {
         DataEntryUtilities.assignStudentsToCourse(ALLCOURSES.get(2), ALLSTUDENTS, assigns);
         assigns.clear();
 
-        /**
-         * **************************ASSIGNING INDIVIDUAL ASSIGMENTS TO THE
-         * STUDENTS OF THE COURSES*****************
-         */
+        
+        //**************************ASSIGNING INDIVIDUAL ASSIGMENTS TO THE STUDENTS OF THE COURSES*****************
         assigns.add(0);
         DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(0).getStudents(), ALLASSIGNMENTS, assigns);
         assigns.clear();
@@ -129,11 +122,8 @@ public class SyntheticDataEntry {
         DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(2).getStudents(), ALLASSIGNMENTS, assigns);
         assigns.clear();
 
-        /**
-         * **************************ASSIGNING GROUP ASSIGMENTS TO THE STUDENTS
-         * OF THE COURSES*****************
-         */
-        
+       
+        // **************************ASSIGNING GROUP ASSIGMENTS TO THE STUDENTS OF THE COURSES*****************
         int courseNo = 0;
         ArrayList<Student> group = new ArrayList<>();
         group.add(ALLCOURSES.get(courseNo).getStudents().get(0));

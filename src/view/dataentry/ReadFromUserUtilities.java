@@ -7,6 +7,7 @@ package view.dataentry;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -103,7 +104,7 @@ public class ReadFromUserUtilities {
             try {
                 LocalDate date = LocalDate.parse(answerStr);
                 return date;
-            } catch (Exception e) {
+            } catch (DateTimeParseException e) {
                 System.out.println("Wrong input, enter a date in format YYYY-MM-DD, or q to quit");
             }
         } while (true);
@@ -132,7 +133,7 @@ public class ReadFromUserUtilities {
 
             try {
                 return LocalDate.parse(answerStr);
-            } catch (Exception e) {
+            } catch (DateTimeParseException e) {
                 System.out.println("Wrong input, enter a date in format YYYY-MM-DD");
             }
         } while (true);
@@ -146,7 +147,7 @@ public class ReadFromUserUtilities {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             try {
                 return LocalDateTime.parse(answerStr, formatter);
-            } catch (Exception e) {
+            } catch (DateTimeParseException e) {
                 System.out.println("Wrong input, enter a date in format YYYY-MM-DD HH:MM");
             }
         } while (true);
