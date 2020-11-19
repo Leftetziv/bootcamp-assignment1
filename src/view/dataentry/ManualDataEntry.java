@@ -184,7 +184,7 @@ public class ManualDataEntry {
             }
 
             if (individualAssignmentsToAssignToStudents.size() > 0) {
-                DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(courseCounter).getStudents(), ALLASSIGNMENTS, individualAssignmentsToAssignToStudents);
+                DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(courseCounter).getStudents(), ALLASSIGNMENTS, individualAssignmentsToAssignToStudents,ALLCOURSES.get(courseCounter).getId());
             }
 
             //*************************** GROUP ASSIGNMENTS ASSIGNS TO THE STUDENTS OF THE COURSE*********************************************************************************
@@ -243,7 +243,7 @@ public class ManualDataEntry {
                         studentGrouping.add(courseStudents.get(group.get(k)));
                     }
 
-                    DataEntryUtilities.assignGroupAssignmentsToCourseStudents(studentGrouping, assignment);
+                    DataEntryUtilities.assignGroupAssignmentsToCourseStudents(studentGrouping, assignment, ALLCOURSES.get(courseCounter).getId());
                 }
             }
 

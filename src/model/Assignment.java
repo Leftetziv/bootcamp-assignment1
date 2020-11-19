@@ -25,6 +25,7 @@ public class Assignment {
     private int maxOralMark;
     private int maxTotalMark;
     private boolean teamAssignment;
+    private long courseId;
 
     ArrayList<Student> assignedStudents;
 
@@ -34,7 +35,7 @@ public class Assignment {
         this.id = count;
     }
 
-    public Assignment(String title, String description, LocalDateTime subDateTime, int oralMark, int totalMark, LocalDateTime dueDateTime, int maxOralMark, int maxTotalMark, boolean teamAssignment) {
+    public Assignment(String title, String description, LocalDateTime subDateTime, int oralMark, int totalMark, LocalDateTime dueDateTime, int maxOralMark, int maxTotalMark, boolean teamAssignment, long courseId) {
         this.title = title;
         this.description = description;
         this.subDateTime = subDateTime;
@@ -44,6 +45,7 @@ public class Assignment {
         this.maxOralMark = maxOralMark;
         this.maxTotalMark = maxTotalMark;
         this.teamAssignment = teamAssignment;
+        this.courseId = courseId;
         this.assignedStudents = new ArrayList<>();
         count++;
         this.id = count;
@@ -132,6 +134,16 @@ public class Assignment {
     public long getId() {
         return id;
     }
+
+    public long getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(long courseId) {
+        this.courseId = courseId;
+    }
+    
+    
 
     @Override
     public String toString() {

@@ -19,7 +19,7 @@ public class RegistryOffice {
      * @param args the command line arguments
      *
      * todo: manual insertion of grades and sub date of the assignments 
-     * todo: when showing assignments per course, stop showing assignments of multicourse students from other courses
+     * 
      *
      *
      */

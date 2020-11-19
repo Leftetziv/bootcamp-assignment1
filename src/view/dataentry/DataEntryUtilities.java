@@ -53,7 +53,7 @@ public class DataEntryUtilities {
         course.setStudents(students);
     }
 
-    static void assignIndividualAssignmentsToCourseStudents(ArrayList<Student> students, ArrayList<Assignment> ALLASSIGNMENTS, ArrayList<Integer> assignmentsAssigns) {
+    static void assignIndividualAssignmentsToCourseStudents(ArrayList<Student> students, ArrayList<Assignment> ALLASSIGNMENTS, ArrayList<Integer> assignmentsAssigns, long courseId) {
         int assignmentsCount;
 
         for (int i : assignmentsAssigns) {
@@ -62,7 +62,7 @@ public class DataEntryUtilities {
             for (int k = 0; k < students.size(); k++) {
                 Assignment assigment = new Assignment(courseAssignment.getTitle(), courseAssignment.getDescription(),
                         getRandomSubmissionDate(courseAssignment.getDueDateTime()), random.nextInt(courseAssignment.getMaxOralMark()), random.nextInt(courseAssignment.getMaxTotalMark()),
-                        courseAssignment.getDueDateTime(), courseAssignment.getMaxOralMark(), courseAssignment.getMaxTotalMark(), false);
+                        courseAssignment.getDueDateTime(), courseAssignment.getMaxOralMark(), courseAssignment.getMaxTotalMark(), false, courseId);
 
                 students.get(k).getAssignments().add(assigment);
 
@@ -72,12 +72,12 @@ public class DataEntryUtilities {
         }
     }
 
-    static void assignGroupAssignmentsToCourseStudents(ArrayList<Student> students, Assignment assignmentOriginal) {
+    static void assignGroupAssignmentsToCourseStudents(ArrayList<Student> students, Assignment assignmentOriginal, long courseId) {
         int assignmentsCount;
 
             Assignment assigment = new Assignment(assignmentOriginal.getTitle(), assignmentOriginal.getDescription(),
                         getRandomSubmissionDate(assignmentOriginal.getDueDateTime()), random.nextInt(assignmentOriginal.getMaxOralMark()), random.nextInt(assignmentOriginal.getMaxTotalMark()),
-                        assignmentOriginal.getDueDateTime(), assignmentOriginal.getMaxOralMark(), assignmentOriginal.getMaxTotalMark(), true);
+                        assignmentOriginal.getDueDateTime(), assignmentOriginal.getMaxOralMark(), assignmentOriginal.getMaxTotalMark(), true, courseId);
             
             for (int k = 0; k < students.size(); k++) {
                 students.get(k).getAssignments().add(assigment);

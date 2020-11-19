@@ -59,12 +59,16 @@ public class DataCalculations {
                         forEach(System.out::println);
                 System.out.println("");
             } else if ("assignments".equals(element)) {
+                long courseId = courses.get(answerInt - 1).getId();
+                
                 List<Assignment> allAssignments = new ArrayList<>();
                 courses.get(answerInt - 1).
                         getStudents().stream().
-                        forEach(i -> i.getAssignments().
+                        forEach(i -> i.getAssignments().stream().
+                        filter(k -> k.getCourseId()==courseId).
                         forEach(allAssignments::add));
-
+                
+                
                 List<Assignment> individualAssignments;
                 Set<Assignment> teamAssignments;
 
