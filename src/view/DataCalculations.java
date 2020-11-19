@@ -10,7 +10,10 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import model.*;
 
@@ -63,20 +66,20 @@ public class DataCalculations {
                         forEach(allAssignments::add));
 
                 List<Assignment> individualAssignments;
-                List<Assignment> teamAssignments;
+                Set<Assignment> teamAssignments;
 
                 individualAssignments = allAssignments.stream().
                         filter(i -> !i.isTeamAssignment()).
                         collect(Collectors.toList());
                 teamAssignments = allAssignments.stream().
                         filter(i -> i.isTeamAssignment()).
-                        collect(Collectors.toList());
-
+                        collect(Collectors.toSet());
+                
                 System.out.println("Individual assignments:");
-                individualAssignments.stream().forEach(Assignment::toStringStudent);
+                individualAssignments.stream().forEach(i -> System.out.println(i));
                 System.out.println("Team assignments:");
                 for (Assignment ass : teamAssignments) {
-                    ass.toStringStudent();                              //TODO REMOVE DUPLICATE TEAM ASSIGNMENTs TO ONLY SHOW ONCE
+                    System.out.println(ass);       //TODO fix SHOWING ASSIGNMENTS OF MULTICOURSE STUDENT FROM OTHER COURSES
                 }
 
                 System.out.println("");
@@ -123,30 +126,13 @@ public class DataCalculations {
             System.out.println(studentCounter + " - " + c);
             studentCounter++;
         }
-     
+
         answerInt = ReadFromUserUtilities.readNumberOrQuit(1, studentCounter - 1);
 
         if (answerInt != -1) {
             Student student = students.get(answerInt - 1);
-            
-            student.getAssignments().stream().forEach(Assignment::toStringStudent);
-            
-//            if (!getMultiCourseStudents(courses).contains(student)) {
-//                System.out.println("Showing student's assginment:");
-//                student.getAssignments().stream().forEach(Assignment::toStringStudent);
-//                System.out.println();
-//            } else {
-//                System.out.println("Showing student's assginment (multiple course student):");
-//                for (Course c : courses) {
-//                    int studentIndex = c.getStudents().indexOf(student);
-//                    if (studentIndex != -1) {
-//                        System.out.println(c.toString() + ":");
-//                        c.getStudents().get(studentIndex).getAssignments().stream().forEach(Assignment::toStringStudent);
-//                        System.out.println();
-//                    }
-//                }
-//                System.out.println();
-//            }
+
+            student.getAssignments().stream().forEach(Assignment::printStudentDetails);
         }
     }
 
@@ -167,6 +153,7 @@ public class DataCalculations {
             startDate = date.atStartOfDay();
             endDate = startDate.plusWeeks(1).plusHours(24);
 
+            System.out.println("Students that still have assignments to submit:");
             for (Course c : courses) {
                 for (Student s : c.getStudents()) {
                     for (Assignment ass : s.getAssignments()) {

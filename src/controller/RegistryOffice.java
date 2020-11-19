@@ -17,6 +17,11 @@ public class RegistryOffice {
 
     /**
      * @param args the command line arguments
+     *
+     * todo: manual insertion of grades and sub date of the assignments 
+     * todo: when showing assignments per course, stop showing assignments of multicourse students from other courses
+     *
+     *
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -40,8 +45,7 @@ public class RegistryOffice {
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.DataEntry();
 
-//        ReadFromUserUtilities.sc = new Scanner(System.in); //reseting the scanner from keaboard for testing
-        
+        ReadFromUserUtilities.sc = new Scanner(System.in); //reseting the scanner from keaboard for testing
         do {
             System.out.println(choiceMenu);
             answerInt = ReadFromUserUtilities.readNumberOrQuit(1, 11);
@@ -105,7 +109,6 @@ public class RegistryOffice {
                         break;
                     default:
                         System.out.println("Enter on of the given numbers");
-
                 }
             } else {
                 break;

@@ -78,7 +78,7 @@ public class Bootcamp {
 
     public void printAllAssignments() {
         System.out.println("Showing general description of all assignments from all the courses:");
-        assignments.stream().forEach(Assignment::toStringCourse);
+        assignments.stream().forEach(Assignment::printCourseDetails);
         System.out.println("");
     }
 

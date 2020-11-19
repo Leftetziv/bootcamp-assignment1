@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Leyteris
  */
-public class Assignment {           
+public class Assignment {
 
     private long id;
     private static long count = 0;
@@ -133,7 +133,26 @@ public class Assignment {
         return id;
     }
 
-    public void toStringStudent() {
+    @Override
+    public String toString() {
+        String answer = "";
+        answer += title + ": " + description;
+        if (subDateTime != null) {
+            answer += ", submitted on " + subDateTime + ", Oral mark: " + oralMark + " Total Mark: " + totalMark;
+            if (subDateTime.isAfter(dueDateTime)) {
+                answer += ". Overdue!";
+            }
+        } else {
+            answer += ", not submitted yet";
+        }
+
+        for (Student s : assignedStudents) {
+            answer += " (" + s.getFirstName() + " " + s.getLastName() + ")";
+        }
+        return answer;
+    }
+
+    public void printStudentDetails() {
         String answer = "";
         answer += title + ": " + description;
         if (subDateTime != null) {
@@ -153,7 +172,7 @@ public class Assignment {
         System.out.println();
     }
 
-    public void toStringCourse() {
+    public void printCourseDetails() {
         System.out.println(title + ": " + description + ", due to " + dueDateTime.toString()
                 + ". Max Oral mark: " + maxOralMark + ", max Total Mark: " + maxTotalMark);
     }

@@ -1,8 +1,8 @@
 CB10
 Java
 Part Time
-2020-02-02
-2020-06-02
+2020-10-05
+2021-03-20
 yes
 Kostas
 Kostou
@@ -11,36 +11,125 @@ yes
 Nikos
 Nikou
 Html
+yes
+Takis
+Takou
+mySql
+yes
+Giannis
+Giannou
+Css
 no
 yes
-student1
-sudentlastname1
+stud_fn_1
+stud_ln_1
 1989-02-02
-1234
+2000
 yes
-student2
-sudentlastname2
+stud_fn_2
+stud_ln_2
 1990-02-02
-2345
+2001
 yes
-student3
-sudentlastname3
+stud_fn_3
+stud_ln_3
 1991-02-02
-2346
+2002
+yes
+stud_fn_4
+stud_ln_4
+1993-02-02
+2004
+yes
+stud_fn_5
+stud_ln_5
+1995-02-02
+2005
+yes
+stud_fn_6
+stud_ln_6
+1996-02-02
+2006
+yes
+stud_fn_7
+stud_ln_7
+1997-02-02
+2007
 no
 yes
 Classes
 Assignment in Classes
-2020-03-02 23:59
+2020-11-10 23:59
 50
 100
 no
 yes
 FrontEnd
 Assignment in FrontEnd
-2020-04-02 23:59
-40
-70
+2021-02-10 23:59
+25
+50
 no
 1,2
+3,4
+5,6,7
+yes
+CB10
+Java
+Full Time
+2020-10-05
+2021-01-10
+yes
+2,3,4
+yes
+Giorgos
+Giorgou
+Java
+no
+yes
 1
+yes
+stud_fn_8
+stud_ln_8
+1998-02-02
+2008
+yes
+stud_fn_9
+stud_ln_9
+1999-02-02
+2009
+yes
+stud_fn_10
+stud_ln_10
+1980-02-02
+2010
+yes
+stud_fn_11
+stud_ln_11
+1981-02-02
+2011
+yes
+stud_fn_12
+stud_ln_12
+1982-02-02
+2012
+no
+yes
+1
+yes
+JSP
+Assignment in Servlets
+2021-01-05 23:59
+40
+100
+no
+yes
+Spring boot
+"Assignment in BackEnd
+2021-01-05 23:59
+50
+100
+no
+1,2,3
+4,5,6
+no

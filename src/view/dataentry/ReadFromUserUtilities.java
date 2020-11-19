@@ -23,10 +23,10 @@ import java.util.Scanner;
 public class ReadFromUserUtilities {
 
     
-//    private static Scanner sc = new Scanner(System.in);
+//    private static Scanner sc = new Scanner(System.in);   //normal keaboard reading
     
-    public static Scanner sc;            //for input testing
-    static {
+    public static Scanner sc;               //for input testing
+    static {                                //for input testing
         try {
             File text = new File("input.txt");
             sc = new Scanner(text);

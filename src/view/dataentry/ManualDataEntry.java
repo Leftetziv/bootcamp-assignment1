@@ -28,10 +28,9 @@ public class ManualDataEntry {
     public static void createManData() {
 
         Course course;
-
+        int courseCounter = 0;
         do {
             course = new Course();
-            int courseCounter = 0;
 
             System.out.println("Enter the course title:");
             course.setTitle(ReadFromUserUtilities.readString());
@@ -211,10 +210,7 @@ public class ManualDataEntry {
                 groupAssignmentsToAssignToStudents.add(ALLASSIGNMENTS.indexOf(assignment));
                 System.out.println("Do you want to add new group assignment for the course? (yes/no)");
             }
-            ReadFromUserUtilities.sc = new Scanner(System.in); //reseting the scanner from keaboard for testing
 
-            
-            
             ArrayList<Student> courseStudents = ALLCOURSES.get(courseCounter).getStudents();
             System.out.println("Groups assignments:");
             for (Integer i : groupAssignmentsToAssignToStudents) {
@@ -242,7 +238,7 @@ public class ManualDataEntry {
                     }
 
                     ArrayList<Student> studentGrouping = new ArrayList<>();
-                    for (int k = 0; k < group.size(); k++) { 
+                    for (int k = 0; k < group.size(); k++) {
                         studentsAllreadyAssigned.add(courseStudents.get(group.get(k)));
                         studentGrouping.add(courseStudents.get(group.get(k)));
                     }
@@ -252,6 +248,9 @@ public class ManualDataEntry {
             }
 
             System.out.println("Add more course?( yes/no)");
+            courseCounter++;
+//            ReadFromUserUtilities.sc = new Scanner(System.in); //reseting the scanner from keaboard for testing
+
         } while (ReadFromUserUtilities.readYesOrNo()); //select the students of the each group
 
     }
