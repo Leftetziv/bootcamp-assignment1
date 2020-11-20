@@ -37,7 +37,7 @@ public class RegistryOffice {
         choiceMenu += "8  - Show all the Assignments per course\n";
         choiceMenu += "9  - Show all the Assignments per student\n";
         choiceMenu += "10 - Show all the Students with assignments on a specific week\n";
-        choiceMenu += "11 - Modify existing data\n";
+        choiceMenu += "11 - Submit & grade student's assignments\n";
 
         int answerInt;
 
@@ -102,7 +102,7 @@ public class RegistryOffice {
                         sc.nextLine();
                         break;
                     case 11:
-                        System.out.println("Coming soon...");                    //todo modify
+                        bootcamp.submitAssignment();
                         System.out.println("Press enter to continue...");
                         sc.nextLine();
                         break;

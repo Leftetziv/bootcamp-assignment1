@@ -109,4 +109,9 @@ public class Bootcamp {
         DataCalculations.printAssignmentsToSubmitPerWeek(courses);
     }
 
+    public void submitAssignment() {
+        DataCalculations.submitAssignment(courses);
+    }
+    
+    
 }

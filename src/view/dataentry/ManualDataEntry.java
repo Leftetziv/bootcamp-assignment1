@@ -144,7 +144,8 @@ public class ManualDataEntry {
             if (individualAssignmentsToAssignToStudents.size() > 0) {
                 DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(
                         ALLCOURSES.get(courseCounter).getStudents(), 
-                        ALLASSIGNMENTS, individualAssignmentsToAssignToStudents,
+                        ALLASSIGNMENTS, 
+                        individualAssignmentsToAssignToStudents,
                         ALLCOURSES.get(courseCounter).getId(),
                         false);
             }
