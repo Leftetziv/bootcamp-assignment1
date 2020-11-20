@@ -113,13 +113,13 @@ public class SyntheticDataEntry {
         
         //**************************ASSIGNING INDIVIDUAL ASSIGMENTS TO THE STUDENTS OF THE COURSES*****************
         assigns.add(0);
-        DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(0).getStudents(), ALLASSIGNMENTS, assigns, ALLCOURSES.get(0).getId());
+        DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(0).getStudents(), ALLASSIGNMENTS, assigns, ALLCOURSES.get(0).getId(), true);
         assigns.clear();
         assigns.add(2);
-        DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(1).getStudents(), ALLASSIGNMENTS, assigns, ALLCOURSES.get(1).getId());
+        DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(1).getStudents(), ALLASSIGNMENTS, assigns, ALLCOURSES.get(1).getId(), true);
         assigns.clear();
         assigns.add(4);
-        DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(2).getStudents(), ALLASSIGNMENTS, assigns, ALLCOURSES.get(2).getId());
+        DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(2).getStudents(), ALLASSIGNMENTS, assigns, ALLCOURSES.get(2).getId(), true);
         assigns.clear();
 
        
@@ -129,16 +129,16 @@ public class SyntheticDataEntry {
         group.add(ALLCOURSES.get(courseNo).getStudents().get(0));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(1));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(2));
-        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(1), ALLCOURSES.get(0).getId());
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(1), ALLCOURSES.get(0).getId(), true);
         group = new ArrayList<>();
         group.add(ALLCOURSES.get(courseNo).getStudents().get(3));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(4));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(5));
-        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(1), ALLCOURSES.get(0).getId());
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(1), ALLCOURSES.get(0).getId(), true);
         group = new ArrayList<>();
         group.add(ALLCOURSES.get(courseNo).getStudents().get(6));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(7));
-        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(1), ALLCOURSES.get(0).getId());
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(1), ALLCOURSES.get(0).getId(), true);
         
 
         
@@ -147,16 +147,16 @@ public class SyntheticDataEntry {
         group.add(ALLCOURSES.get(courseNo).getStudents().get(0));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(1));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(2));
-        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(3), ALLCOURSES.get(1).getId());
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(3), ALLCOURSES.get(1).getId(), true);
         group = new ArrayList<>();
         group.add(ALLCOURSES.get(courseNo).getStudents().get(3));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(4));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(5));
-        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(3), ALLCOURSES.get(1).getId());
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(3), ALLCOURSES.get(1).getId(), true);
         group = new ArrayList<>();
         group.add(ALLCOURSES.get(courseNo).getStudents().get(6));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(7));
-        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(3), ALLCOURSES.get(1).getId());
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(3), ALLCOURSES.get(1).getId(), true);
         
 
         
@@ -165,16 +165,16 @@ public class SyntheticDataEntry {
         group.add(ALLCOURSES.get(courseNo).getStudents().get(0));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(1));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(2));
-        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(5), ALLCOURSES.get(2).getId());
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(5), ALLCOURSES.get(2).getId(), true);
         group = new ArrayList<>();
         group.add(ALLCOURSES.get(courseNo).getStudents().get(3));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(4));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(5));
-        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(5), ALLCOURSES.get(2).getId());
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(5), ALLCOURSES.get(2).getId(), true);
         group = new ArrayList<>();
         group.add(ALLCOURSES.get(courseNo).getStudents().get(6));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(7));
-        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(5), ALLCOURSES.get(2).getId());
+        DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(5), ALLCOURSES.get(2).getId(), true);
         
 
     }

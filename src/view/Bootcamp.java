@@ -31,8 +31,8 @@ public class Bootcamp {
          
         System.out.println("Manual data entry or synthetic data? (man/syn)");
         String answer;
-        answer = "man";
-//        answer = sc.nextLine();
+//        answer = "man";
+        answer = sc.nextLine();
         while (!answer.equalsIgnoreCase("man") && !answer.equalsIgnoreCase("syn")) {
             System.out.println("Select MAN or SYN data entry");
             answer = sc.nextLine();
@@ -78,7 +78,7 @@ public class Bootcamp {
 
     public void printAllAssignments() {
         System.out.println("Showing general description of all assignments from all the courses:");
-        assignments.stream().forEach(Assignment::printCourseDetails);
+        assignments.stream().forEach(i ->  System.out.println(i.toStringBrief()));
         System.out.println("");
     }
 

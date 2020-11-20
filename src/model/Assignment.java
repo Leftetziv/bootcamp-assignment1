@@ -143,14 +143,15 @@ public class Assignment {
         this.courseId = courseId;
     }
     
-    
 
     @Override
     public String toString() {
         String answer = "";
         answer += title + ": " + description;
         if (subDateTime != null) {
-            answer += ", submitted on " + subDateTime + ", Oral mark: " + oralMark + " Total Mark: " + totalMark;
+            answer += ", submitted on " + subDateTime + 
+                    ", Oral mark: " + oralMark + "/"+maxOralMark+
+                    " Total Mark: " + totalMark+ "/"+maxTotalMark;
             if (subDateTime.isAfter(dueDateTime)) {
                 answer += ". Overdue!";
             }
@@ -162,31 +163,16 @@ public class Assignment {
             answer += " (" + s.getFirstName() + " " + s.getLastName() + ")";
         }
         return answer;
-    }
-
-    public void printStudentDetails() {
-        String answer = "";
-        answer += title + ": " + description;
-        if (subDateTime != null) {
-            answer += ", submitted on " + subDateTime + ", Oral mark: " + oralMark + " Total Mark: " + totalMark;
-            if (subDateTime.isAfter(dueDateTime)) {
-                answer += ". Overdue!";
-            }
-        } else {
-            answer += ", not submitted yet";
-        }
-        System.out.print(answer);
-
-        for (Student s : assignedStudents) {
-            System.out.print(" (" + s.getFirstName() + " " + s.getLastName() + ")");
-        }
-
-        System.out.println();
-    }
+    }   
 
     public void printCourseDetails() {
         System.out.println(title + ": " + description + ", due to " + dueDateTime.toString()
                 + ". Max Oral mark: " + maxOralMark + ", max Total Mark: " + maxTotalMark);
+    }
+    
+    public String toStringBrief() {
+        return title + ": " + description + ", due to " + dueDateTime.toString()
+                + ". Max Oral mark: " + maxOralMark + ", max Total Mark: " + maxTotalMark;
     }
 
     @Override

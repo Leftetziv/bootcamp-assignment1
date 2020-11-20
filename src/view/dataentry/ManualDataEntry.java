@@ -30,19 +30,7 @@ public class ManualDataEntry {
         Course course;
         int courseCounter = 0;
         do {
-            course = new Course();
-
-            System.out.println("Enter the course title:");
-            course.setTitle(ReadFromUserUtilities.readString());
-            System.out.println("Enter the course stream:");
-            course.setStream(ReadFromUserUtilities.readString());
-            System.out.println("Enter the course type:");
-            course.setType(ReadFromUserUtilities.readString());
-            System.out.println("Enter the course start date:");
-            course.setStartDate(ReadFromUserUtilities.readDate());
-            System.out.println("Enter the course end date:");
-            course.setEndDate(ReadFromUserUtilities.readDate());
-            System.out.println("Course created");
+            course = ReadModelsFromUser.getCourseFromUser();          
             ALLCOURSES.add(course);
 
             //***************************TRAINERS ASSIGNMENTS TO THE COURSES *************************************************************************
@@ -69,15 +57,7 @@ public class ManualDataEntry {
 
             System.out.println("Do you want to add new trainer for the course? (yes/no)");
             while (ReadFromUserUtilities.readYesOrNo()) {
-                Trainer trainer = new Trainer();
-                System.out.println("\nCreating trainer for the course:");
-                System.out.println("Enter the trainer first name:");
-                trainer.setFirstName(ReadFromUserUtilities.readString());
-                System.out.println("Enter the trainer last name:");
-                trainer.setLastName(ReadFromUserUtilities.readString());
-                System.out.println("Enter the trainer subject:");
-                trainer.setSubject(ReadFromUserUtilities.readString());
-
+                Trainer trainer = ReadModelsFromUser.getTrainerFromUser();
                 ALLTRAINERS.add(trainer);
                 trainersToAssign.add(ALLTRAINERS.indexOf(trainer));
                 System.out.println("Do you want to add new trainer for the course? (yes/no)");
@@ -103,6 +83,7 @@ public class ManualDataEntry {
 
                     List<Integer> existingStudentsToAssign = ReadFromUserUtilities.readListOfNumbersOrQuit(1, studentCounter - 1);
                     existingStudentsToAssign = existingStudentsToAssign.stream().map(i -> i - 1).collect(Collectors.toList());
+                    
                     if (existingStudentsToAssign.get(0) != -2) {
                         studentsToAssign.addAll(existingStudentsToAssign);
                     }
@@ -111,17 +92,7 @@ public class ManualDataEntry {
 
             System.out.println("Do you want to add new students for the course? (yes/no)");
             while (ReadFromUserUtilities.readYesOrNo()) {
-                Student student = new Student();
-                System.out.println("\nCreating student for the course:");
-                System.out.println("Enter the student first name:");
-                student.setFirstName(ReadFromUserUtilities.readString());
-                System.out.println("Enter the student last name:");
-                student.setLastName(ReadFromUserUtilities.readString());
-                System.out.println("Enter the student date of birth:");
-                student.setDateOfBirth(ReadFromUserUtilities.readDate());
-                System.out.println("Enter the student tuition fees:");
-                student.setTuitionFees(ReadFromUserUtilities.readInt());
-
+                Student student = ReadModelsFromUser.getStudentFromUser();
                 ALLSTUDENTS.add(student);
                 studentsToAssign.add(ALLSTUDENTS.indexOf(student));
                 System.out.println("Do you want to add new Student for the course? (yes/no)");
@@ -164,27 +135,18 @@ public class ManualDataEntry {
 
             System.out.println("Do you want to add new individual assignment for the course? (yes/no)");
             while (ReadFromUserUtilities.readYesOrNo()) {
-                Assignment assignment = new Assignment();
-                System.out.println("\nCreating assignment for the course:");
-                System.out.println("Enter the assignment title:");
-                assignment.setTitle(ReadFromUserUtilities.readString());
-                System.out.println("Enter the assignment description:");
-                assignment.setDescription(ReadFromUserUtilities.readString());
-                System.out.println("Enter the assignment due to date:");
-                assignment.setDueDateTime(ReadFromUserUtilities.readDateTime());
-                System.out.println("Enter the assignment max oral mark:");
-                assignment.setMaxOralMark(ReadFromUserUtilities.readInt());
-                System.out.println("Enter the assignment max total mark:");
-                assignment.setMaxTotalMark(ReadFromUserUtilities.readInt());
-                assignment.setTeamAssignment(false);
-
+                Assignment assignment = ReadModelsFromUser.getAssignment(false);
                 ALLASSIGNMENTS.add(assignment);
                 individualAssignmentsToAssignToStudents.add(ALLASSIGNMENTS.indexOf(assignment));
                 System.out.println("Do you want to add new individual assignment for the course? (yes/no)");
             }
 
             if (individualAssignmentsToAssignToStudents.size() > 0) {
-                DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(ALLCOURSES.get(courseCounter).getStudents(), ALLASSIGNMENTS, individualAssignmentsToAssignToStudents,ALLCOURSES.get(courseCounter).getId());
+                DataEntryUtilities.assignIndividualAssignmentsToCourseStudents(
+                        ALLCOURSES.get(courseCounter).getStudents(), 
+                        ALLASSIGNMENTS, individualAssignmentsToAssignToStudents,
+                        ALLCOURSES.get(courseCounter).getId(),
+                        false);
             }
 
             //*************************** GROUP ASSIGNMENTS ASSIGNS TO THE STUDENTS OF THE COURSE*********************************************************************************
@@ -192,20 +154,7 @@ public class ManualDataEntry {
 
             System.out.println("Do you want to add new group assignment for the course? (yes/no)");
             while (ReadFromUserUtilities.readYesOrNo()) {
-                Assignment assignment = new Assignment();
-                System.out.println("\nCreating assignment for the course:");
-                System.out.println("Enter the assignment title:");
-                assignment.setTitle(ReadFromUserUtilities.readString());
-                System.out.println("Enter the assignment description:");
-                assignment.setDescription(ReadFromUserUtilities.readString());
-                System.out.println("Enter the assignment due to date:");
-                assignment.setDueDateTime(ReadFromUserUtilities.readDateTime());
-                System.out.println("Enter the assignment max oral mark:");
-                assignment.setMaxOralMark(ReadFromUserUtilities.readInt());
-                System.out.println("Enter the assignment max total mark:");
-                assignment.setMaxTotalMark(ReadFromUserUtilities.readInt());
-                assignment.setTeamAssignment(true);
-
+                Assignment assignment = ReadModelsFromUser.getAssignment(true);
                 ALLASSIGNMENTS.add(assignment);
                 groupAssignmentsToAssignToStudents.add(ALLASSIGNMENTS.indexOf(assignment));
                 System.out.println("Do you want to add new group assignment for the course? (yes/no)");
@@ -243,16 +192,17 @@ public class ManualDataEntry {
                         studentGrouping.add(courseStudents.get(group.get(k)));
                     }
 
-                    DataEntryUtilities.assignGroupAssignmentsToCourseStudents(studentGrouping, assignment, ALLCOURSES.get(courseCounter).getId());
+                    DataEntryUtilities.assignGroupAssignmentsToCourseStudents(
+                            studentGrouping, 
+                            assignment, 
+                            ALLCOURSES.get(courseCounter).getId(), 
+                            false);
                 }
             }
 
             System.out.println("Add more course?( yes/no)");
             courseCounter++;
-//            ReadFromUserUtilities.sc = new Scanner(System.in); //reseting the scanner from keaboard for testing
-
-        } while (ReadFromUserUtilities.readYesOrNo()); //select the students of the each group
-
+        } while (ReadFromUserUtilities.readYesOrNo());
     }
 
     public static ArrayList<Course> getALLCOURSES() {

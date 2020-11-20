@@ -53,7 +53,7 @@ public class DataEntryUtilities {
         course.setStudents(students);
     }
 
-    static void assignIndividualAssignmentsToCourseStudents(ArrayList<Student> students, ArrayList<Assignment> ALLASSIGNMENTS, ArrayList<Integer> assignmentsAssigns, long courseId) {
+    static void assignIndividualAssignmentsToCourseStudents(ArrayList<Student> students, ArrayList<Assignment> ALLASSIGNMENTS, ArrayList<Integer> assignmentsAssigns, long courseId, boolean randomize) {
         int assignmentsCount;
 
         for (int i : assignmentsAssigns) {
@@ -61,9 +61,16 @@ public class DataEntryUtilities {
 
             for (int k = 0; k < students.size(); k++) {
                 Assignment assigment = new Assignment(courseAssignment.getTitle(), courseAssignment.getDescription(),
-                        getRandomSubmissionDate(courseAssignment.getDueDateTime()), random.nextInt(courseAssignment.getMaxOralMark()), random.nextInt(courseAssignment.getMaxTotalMark()),
-                        courseAssignment.getDueDateTime(), courseAssignment.getMaxOralMark(), courseAssignment.getMaxTotalMark(), false, courseId);
+                        null, -1, -1,
+                        courseAssignment.getDueDateTime(), courseAssignment.getMaxOralMark(), courseAssignment.getMaxTotalMark(),
+                        false, courseId);
 
+                if (randomize) {
+                    assigment.setSubDateTime(getRandomSubmissionDate(courseAssignment.getDueDateTime()));
+                    assigment.setOralMark(random.nextInt(courseAssignment.getMaxOralMark()));
+                    assigment.setTotalMark(random.nextInt(courseAssignment.getMaxTotalMark()));
+                }
+                
                 students.get(k).getAssignments().add(assigment);
 
                 assignmentsCount = students.get(k).getAssignments().size();
@@ -72,12 +79,20 @@ public class DataEntryUtilities {
         }
     }
 
-    static void assignGroupAssignmentsToCourseStudents(ArrayList<Student> students, Assignment assignmentOriginal, long courseId) {
+    static void assignGroupAssignmentsToCourseStudents(ArrayList<Student> students, Assignment assignmentOriginal, long courseId, boolean randomize) {
         int assignmentsCount;
 
             Assignment assigment = new Assignment(assignmentOriginal.getTitle(), assignmentOriginal.getDescription(),
-                        getRandomSubmissionDate(assignmentOriginal.getDueDateTime()), random.nextInt(assignmentOriginal.getMaxOralMark()), random.nextInt(assignmentOriginal.getMaxTotalMark()),
-                        assignmentOriginal.getDueDateTime(), assignmentOriginal.getMaxOralMark(), assignmentOriginal.getMaxTotalMark(), true, courseId);
+                        null, -1, -1,
+                        assignmentOriginal.getDueDateTime(), assignmentOriginal.getMaxOralMark(), assignmentOriginal.getMaxTotalMark(),
+                        true, courseId);
+            
+            if (randomize) {
+                    assigment.setSubDateTime(getRandomSubmissionDate(assignmentOriginal.getDueDateTime()));
+                    assigment.setOralMark(random.nextInt(assignmentOriginal.getMaxOralMark()));
+                    assigment.setTotalMark(random.nextInt(assignmentOriginal.getMaxTotalMark()));
+                }
+            
             
             for (int k = 0; k < students.size(); k++) {
                 students.get(k).getAssignments().add(assigment);

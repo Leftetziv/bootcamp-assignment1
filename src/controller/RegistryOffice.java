@@ -18,9 +18,8 @@ public class RegistryOffice {
     /**
      * @param args the command line arguments
      *
-     * todo: manual insertion of grades and sub date of the assignments 
+     * todo: manual insertion of grades and submission date of the assignments  
      * 
-     *
      *
      */
     public static void main(String[] args) {

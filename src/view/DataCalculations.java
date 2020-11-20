@@ -52,12 +52,12 @@ public class DataCalculations {
                 courses.get(answerInt - 1).
                         getStudents().stream().
                         forEach(System.out::println);
-                System.out.println("");
+                System.out.println();
             } else if ("trainers".equals(element)) {
                 courses.get(answerInt - 1).
                         getTrainers().stream().
                         forEach(System.out::println);
-                System.out.println("");
+                System.out.println();
             } else if ("assignments".equals(element)) {
                 long courseId = courses.get(answerInt - 1).getId();
                 
@@ -68,25 +68,24 @@ public class DataCalculations {
                         filter(k -> k.getCourseId()==courseId).
                         forEach(allAssignments::add));
                 
-                
-                List<Assignment> individualAssignments;
-                Set<Assignment> teamAssignments;
-
-                individualAssignments = allAssignments.stream().
+                List<Assignment> individualAssignments =                            //printing individual assigments
+                        allAssignments.stream().
                         filter(i -> !i.isTeamAssignment()).
                         collect(Collectors.toList());
-                teamAssignments = allAssignments.stream().
-                        filter(i -> i.isTeamAssignment()).
-                        collect(Collectors.toSet());
-                
                 System.out.println("Individual assignments:");
                 individualAssignments.stream().forEach(i -> System.out.println(i));
-                System.out.println("Team assignments:");
+                
+                
+                Set<Assignment> teamAssignments =                                   //printing group assigments
+                        allAssignments.stream().
+                        filter(i -> i.isTeamAssignment()).
+                        collect(Collectors.toSet());
+                System.out.println("Team assignments:");               
                 for (Assignment ass : teamAssignments) {
-                    System.out.println(ass);       //TODO fix SHOWING ASSIGNMENTS OF MULTICOURSE STUDENT FROM OTHER COURSES
+                    System.out.println(ass);
                 }
 
-                System.out.println("");
+                System.out.println();
             }
         }
     }
@@ -136,7 +135,7 @@ public class DataCalculations {
         if (answerInt != -1) {
             Student student = students.get(answerInt - 1);
 
-            student.getAssignments().stream().forEach(Assignment::printStudentDetails);
+            student.getAssignments().stream().forEach(i -> System.out.println(i));
         }
     }
 
