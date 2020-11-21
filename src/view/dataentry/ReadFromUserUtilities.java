@@ -23,17 +23,17 @@ import java.util.Scanner;
 public class ReadFromUserUtilities {
 
     
-//    private static Scanner sc = new Scanner(System.in);   //normal keaboard reading
+    private static Scanner sc = new Scanner(System.in);   //normal keaboard reading
     
-    public static Scanner sc;               //for input testing
-    static {                                //for input testing
-        try {
-            File text = new File("input.txt");
-            sc = new Scanner(text);
-        } catch (FileNotFoundException e) {
-            sc = new Scanner(System.in);
-        }
-    }
+//    public static Scanner sc;               //for input testing 
+//    static {                                //for input testing
+//        try {
+//            File text = new File("input.txt");
+//            sc = new Scanner(text);
+//        } catch (FileNotFoundException e) {
+//            sc = new Scanner(System.in);
+//        }
+//    }
 
     public static int readNumberOrQuit(int start, int end) {
         String answerStr;
@@ -98,7 +98,7 @@ public class ReadFromUserUtilities {
             answerStr = sc.nextLine();
 
             if ("q".equalsIgnoreCase(answerStr)) {
-                return LocalDate.parse("0001-01-01");
+                return LocalDate.parse("0001-01-01");                           //could throw an exeption instead
             }
 
             try {
@@ -155,17 +155,18 @@ public class ReadFromUserUtilities {
 
     public static int readInt() {
         String answerStr;
-        int tuitionFees;
+        int answerInt;
 
         do {
             answerStr = sc.nextLine();
 
             try {
-                tuitionFees = Integer.parseInt(answerStr);
-                if (tuitionFees < 0) {
-                    System.out.println("Tuition cant be a negative number");
+                answerInt = Integer.parseInt(answerStr);
+                if (answerInt < 0) {
+                    System.out.println("Cant be a negative number");
+                    continue;
                 }
-                return tuitionFees;
+                return answerInt;
             } catch (NumberFormatException e) {
                 System.out.println("Must input a number");
             }
