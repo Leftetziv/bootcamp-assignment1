@@ -175,8 +175,6 @@ public class SyntheticDataEntry {
         group.add(ALLCOURSES.get(courseNo).getStudents().get(6));
         group.add(ALLCOURSES.get(courseNo).getStudents().get(7));
         DataEntryUtilities.assignGroupAssignmentsToCourseStudents(group, ALLASSIGNMENTS.get(5), ALLCOURSES.get(2).getId(), true);
-        
-
     }
 
     private static LocalDate getRandomBirthDate() {

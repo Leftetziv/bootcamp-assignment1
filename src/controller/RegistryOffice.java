@@ -18,7 +18,7 @@ public class RegistryOffice {
     /**
      * @param args the command line arguments
      *
-     * todo: manual insertion of grades and submission date of the assignments  
+     *  
      * 
      *
      */
@@ -34,10 +34,9 @@ public class RegistryOffice {
         choiceMenu += "5  - Show all courses Assignments\n";
         choiceMenu += "6  - Show all the Students per course\n";
         choiceMenu += "7  - Show all the Trainers per course\n";
-        choiceMenu += "8  - Show all the Assignments per course\n";
+        choiceMenu += "8  - Show and submit the Assignments per course\n";
         choiceMenu += "9  - Show all the Assignments per student\n";
         choiceMenu += "10 - Show all the Students with assignments on a specific week\n";
-        choiceMenu += "11 - Submit & grade student's assignments\n";
 
         int answerInt;
 
@@ -101,12 +100,7 @@ public class RegistryOffice {
                         bootcamp.printAssignmentsToSubmitPerWeek();
                         System.out.println("Press enter to continue...");
                         sc.nextLine();
-                        break;
-                    case 11:
-                        bootcamp.submitAssignment();
-                        System.out.println("Press enter to continue...");
-                        sc.nextLine();
-                        break;
+                        break;                  
                     default:
                         System.out.println("Enter on of the given numbers");
                 }

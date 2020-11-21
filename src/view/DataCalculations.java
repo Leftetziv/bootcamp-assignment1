@@ -150,7 +150,6 @@ public class DataCalculations {
                 } while (mark < 0 || mark > notSubmittedTeamAssignments.get(answer).getMaxTotalMark());
             }
         }
-
     }
 
     public static ArrayList<Student> getMultiCourseStudents(ArrayList<Course> courses) {
@@ -230,44 +229,6 @@ public class DataCalculations {
                 }
             }
         }
-
-//        
     }
-
-    public static void submitAssignment(ArrayList<Course> courses) {
-        int answerInt;
-        int courseCounter = 1;
-
-        System.out.println("Enter the number of the course that you want to submit an assignment, or q to exit");
-        for (Course c : courses) {
-            System.out.println(courseCounter + " - " + c);
-            courseCounter++;
-        }
-
-        answerInt = ReadFromUserUtilities.readNumberOrQuit(1, courseCounter - 1);
-        long courseId = courses.get(answerInt - 1).getId();
-
-        List<Assignment> allAssignments = new ArrayList<>();
-        courses.get(answerInt - 1).
-                getStudents().stream().
-                forEach(i -> i.getAssignments().stream().
-                filter(k -> k.getCourseId() == courseId).
-                forEach(allAssignments::add));
-
-        List<Assignment> individualAssignments
-                = allAssignments.stream().
-                        filter(i -> !i.isTeamAssignment()).
-                        collect(Collectors.toList());
-
-        Set<Assignment> teamAssignments
-                = allAssignments.stream().
-                        filter(i -> i.isTeamAssignment()).
-                        collect(Collectors.toSet());
-
-        for (Assignment ass : individualAssignments) {
-            System.out.println("");
-        }
-
-    }
-
+    
 }
