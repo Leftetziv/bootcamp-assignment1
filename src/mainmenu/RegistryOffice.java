@@ -6,7 +6,7 @@
 package mainmenu;
 
 import utilities.ReadFromUserUtilities;
-import view.Bootcamp;
+import repository.Bootcamp;
 import java.util.Scanner;
 
 /**
