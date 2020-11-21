@@ -86,9 +86,20 @@ public class DataCalculations {
                 }
 
                 System.out.println();
+                System.out.println("Do you want to submit a student's assignment?");
+                
+                if (ReadFromUserUtilities.readYesOrNo()) {
+                    submitAssignment(individualAssignments, teamAssignments);
+                }
             }
         }
     }
+    
+    private static void submitAssignment(List<Assignment> individualAssignments,Set<Assignment>  teamAssignments) {
+        
+        
+    }
+    
 
     public static ArrayList<Student> getMultiCourseStudents(ArrayList<Course> courses) {
         return getStudentList(courses, true);
