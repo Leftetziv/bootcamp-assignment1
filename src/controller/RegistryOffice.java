@@ -15,13 +15,6 @@ import java.util.Scanner;
  */
 public class RegistryOffice {
 
-    /**
-     * @param args the command line arguments
-     *
-     *  
-     * 
-     *
-     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String choiceMenu = "";
@@ -43,7 +36,7 @@ public class RegistryOffice {
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.DataEntry();
 
-//        ReadFromUserUtilities.sc = new Scanner(System.in); //reseting the scanner from keaboard for testing
+        ReadFromUserUtilities.sc = new Scanner(System.in); //reseting the scanner from keaboard for testing
         
         do {
             System.out.println(choiceMenu);
@@ -109,17 +102,6 @@ public class RegistryOffice {
             }
         } while (true);
 
-//        registry.printAllCourses();
-//        registry.printAllTrainers();
-//        registry.printAllStudents();
-//        registry.printAllAssignments();
-//        registry.printMultiCourseStudents();
-//
-//        registry.printStudentsPerCourse();
-//        registry.printTrainersPerCourse();
-//        registry.printAssignmentsPerCourse();
-//        registry.printAssignmentsPerStudent();    
-//        registry.printAssignmentsToSubmitPerWeek();
     }
 
 }

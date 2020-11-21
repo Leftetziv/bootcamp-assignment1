@@ -14,7 +14,7 @@ import model.Trainer;
  *
  * @author Leyteris
  */
-public class ReadModelsFromUser {
+public class ReadFromUserModels {
 
     public static Course getCourseFromUser() {
         Course course = new Course();
@@ -72,7 +72,7 @@ public class ReadModelsFromUser {
         assignment.setDueDateTime(ReadFromUserUtilities.readDateTime());
         System.out.println("Enter the assignment max oral mark:");
         assignment.setMaxOralMark(ReadFromUserUtilities.readInt());
-        System.out.println("Enter the assignment max total mark:");     //TODO MAKING SURE TOTAL MARK IS BIGGER THAN ORAL MARK
+        System.out.println("Enter the assignment max total mark:");     //TODO total have to be greater than oral
         assignment.setMaxTotalMark(ReadFromUserUtilities.readInt());
         assignment.setTeamAssignment(isGroupAssignment);
         

@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Leyteris/Documents/NetBeansProjects/AssignmentPartA/src/view/dataentry/DataEntryUtilities.java</file>
-            <file>file:/C:/Users/Leyteris/Documents/NetBeansProjects/AssignmentPartA/src/view/Bootcamp.java</file>
-            <file>file:/C:/Users/Leyteris/Documents/NetBeansProjects/AssignmentPartA/src/view/dataentry/ManualDataEntry.java</file>
-            <file>file:/C:/Users/Leyteris/Documents/NetBeansProjects/AssignmentPartA/src/view/dataentry/ReadFromUserUtilities.java</file>
-            <file>file:/C:/Users/Leyteris/Documents/NetBeansProjects/AssignmentPartA/src/view/dataentry/SyntheticDataEntry.java</file>
-            <file>file:/C:/Users/Leyteris/Documents/NetBeansProjects/AssignmentPartA/src/model/Assignment.java</file>
-            <file>file:/C:/Users/Leyteris/Documents/NetBeansProjects/AssignmentPartA/src/controller/RegistryOffice.java</file>
-            <file>file:/C:/Users/Leyteris/Documents/NetBeansProjects/AssignmentPartA/src/view/DataCalculations.java</file>
+            <file>file:/C:/Users/Leyteris/Documents/NetBeansProjects/bootcamp-assignment1/bootcamp-assignment1/src/model/Course.java</file>
+            <file>file:/C:/Users/Leyteris/Documents/NetBeansProjects/bootcamp-assignment1/bootcamp-assignment1/src/view/DataCalculations.java</file>
+            <file>file:/C:/Users/Leyteris/Documents/NetBeansProjects/bootcamp-assignment1/bootcamp-assignment1/src/model/Assignment.java</file>
+            <file>file:/C:/Users/Leyteris/Documents/NetBeansProjects/bootcamp-assignment1/bootcamp-assignment1/src/model/Trainer.java</file>
         </group>
     </open-files>
 </project-private>

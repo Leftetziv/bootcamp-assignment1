@@ -26,7 +26,6 @@ public class Assignment {
     private int maxTotalMark;
     private boolean teamAssignment;
     private long courseId;
-
     ArrayList<Student> assignedStudents;
 
     public Assignment() {

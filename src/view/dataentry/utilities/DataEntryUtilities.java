@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.dataentry;
+package view.dataentry.utilities;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class DataEntryUtilities {
 
     private static Random random = new Random();
 
-    private static LocalDateTime getRandomSubmissionDate(LocalDateTime due) {
+     private static LocalDateTime getRandomSubmissionDate(LocalDateTime due) {
         float dice = random.nextFloat();
 
         if (dice < 0.33) {
@@ -33,7 +33,7 @@ public class DataEntryUtilities {
         }
     }
 
-    static void assignTrainersToCourse(Course course, ArrayList<Trainer> ALLTRAINERS, ArrayList<Integer> trainersAssigns) {
+    public static void assignTrainersToCourse(Course course, ArrayList<Trainer> ALLTRAINERS, ArrayList<Integer> trainersAssigns) {
         ArrayList<Trainer> trainers = new ArrayList<>();
 
         for (int i : trainersAssigns) {
@@ -43,7 +43,7 @@ public class DataEntryUtilities {
         course.setTrainers(trainers);
     }
 
-    static void assignStudentsToCourse(Course course, ArrayList<Student> ALLSTUDENTS, ArrayList<Integer> studentsAssigns) {
+    public static void assignStudentsToCourse(Course course, ArrayList<Student> ALLSTUDENTS, ArrayList<Integer> studentsAssigns) {
         ArrayList<Student> students = new ArrayList<>();
 
         for (int i : studentsAssigns) {
@@ -53,7 +53,13 @@ public class DataEntryUtilities {
         course.setStudents(students);
     }
 
-    static void assignIndividualAssignmentsToCourseStudents(ArrayList<Student> students, ArrayList<Assignment> ALLASSIGNMENTS, ArrayList<Integer> assignmentsAssigns, long courseId, boolean randomize) {
+    public static void assignIndividualAssignmentsToCourseStudents(
+            ArrayList<Student> students, 
+            ArrayList<Assignment> ALLASSIGNMENTS, 
+            ArrayList<Integer> assignmentsAssigns, 
+            long courseId, 
+            boolean randomize) {
+        
         int assignmentsCount;
 
         for (int i : assignmentsAssigns) {
@@ -79,7 +85,12 @@ public class DataEntryUtilities {
         }
     }
 
-    static void assignGroupAssignmentsToCourseStudents(ArrayList<Student> students, Assignment assignmentOriginal, long courseId, boolean randomize) {
+    public static void assignGroupAssignmentsToCourseStudents(
+            ArrayList<Student> students, 
+            Assignment assignmentOriginal, 
+            long courseId, 
+            boolean randomize) {
+        
         int assignmentsCount;
 
             Assignment assigment = new Assignment(assignmentOriginal.getTitle(), assignmentOriginal.getDescription(),
@@ -99,7 +110,6 @@ public class DataEntryUtilities {
 
                 assignmentsCount = students.get(k).getAssignments().size();
                 students.get(k).getAssignments().get(assignmentsCount - 1).getAssignedStudents().add(students.get(k));
-            }
-        
+            }        
     }
 }

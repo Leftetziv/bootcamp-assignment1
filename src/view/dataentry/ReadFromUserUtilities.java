@@ -23,17 +23,17 @@ import java.util.Scanner;
 public class ReadFromUserUtilities {
 
     
-    private static Scanner sc = new Scanner(System.in);   //normal keaboard reading
+//    private static Scanner sc = new Scanner(System.in);   //normal keaboard reading
     
-//    public static Scanner sc;               //for input testing 
-//    static {                                //for input testing
-//        try {
-//            File text = new File("input.txt");
-//            sc = new Scanner(text);
-//        } catch (FileNotFoundException e) {
-//            sc = new Scanner(System.in);
-//        }
-//    }
+    public static Scanner sc;               //for input testing 
+    static {                                //for input testing
+        try {
+            File text = new File("input.txt");
+            sc = new Scanner(text);
+        } catch (FileNotFoundException e) {
+            sc = new Scanner(System.in);
+        }
+    }
 
     public static int readNumberOrQuit(int start, int end) {
         String answerStr;
