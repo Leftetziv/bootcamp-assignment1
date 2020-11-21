@@ -5,10 +5,11 @@
  */
 package view;
 
+import utilities.DataCalculations;
 import java.io.File;
 import java.io.FileNotFoundException;
-import view.dataentry.ManualDataEntry;
-import view.dataentry.SyntheticDataEntry;
+import dataentry.ManualDataEntry;
+import dataentry.SyntheticDataEntry;
 import java.util.ArrayList;
 import java.util.Scanner;
 import model.*;

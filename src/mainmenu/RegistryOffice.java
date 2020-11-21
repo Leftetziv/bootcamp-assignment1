@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package mainmenu;
 
-import view.dataentry.ReadFromUserUtilities;
+import utilities.ReadFromUserUtilities;
 import view.Bootcamp;
 import java.util.Scanner;
 

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.dataentry;
+package dataentry;
 
-import view.dataentry.utilities.DataEntryUtilities;
+import utilities.DataEntryUtilities;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;

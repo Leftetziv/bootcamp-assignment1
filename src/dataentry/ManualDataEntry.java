@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.dataentry;
+package dataentry;
 
-import view.dataentry.utilities.DataEntryUtilities;
+import utilities.ReadFromUserUtilities;
+import utilities.DataEntryUtilities;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

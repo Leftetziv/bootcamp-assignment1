@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.dataentry;
+package dataentry;
 
+import utilities.ReadFromUserUtilities;
 import model.Assignment;
 import model.Course;
 import model.Student;
