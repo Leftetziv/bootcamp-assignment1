@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.dataentry;
+package dataentry;
 
+import utilities.ReadFromUserModels;
+import utilities.ReadFromUserUtilities;
+import utilities.DataEntryUtilities;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -29,14 +32,15 @@ public class ManualDataEntry {
 
         Course course;
         int courseCounter = 0;
+        
         do {
-            course = ReadModelsFromUser.getCourseFromUser();          
+            course = ReadFromUserModels.getCourseFromUser();          
             ALLCOURSES.add(course);
 
             //***************************TRAINERS ASSIGNMENTS TO THE COURSES *************************************************************************
             ArrayList<Integer> trainersToAssign = new ArrayList<>();
 
-            if (ALLTRAINERS.size() != 0) {                             //ASKING USER IF WANT TO ADD ALREADY EXISTING TRAINERS
+            if (ALLTRAINERS.size() != 0) {                             //ASKING USER IF HE WANTS TO ADD ALREADY EXISTING TRAINERS
                 System.out.println("Do you want to assign some already existing trainers to the course? (yes/no)");
                 if (ReadFromUserUtilities.readYesOrNo()) {
                     System.out.println("Enter the numbers of the Trainers below to assign them. Seperate the values by commas, like in the following example: 5,8,9,11");
@@ -57,7 +61,7 @@ public class ManualDataEntry {
 
             System.out.println("Do you want to add new trainer for the course? (yes/no)");
             while (ReadFromUserUtilities.readYesOrNo()) {
-                Trainer trainer = ReadModelsFromUser.getTrainerFromUser();
+                Trainer trainer = ReadFromUserModels.getTrainerFromUser();
                 ALLTRAINERS.add(trainer);
                 trainersToAssign.add(ALLTRAINERS.indexOf(trainer));
                 System.out.println("Do you want to add new trainer for the course? (yes/no)");
@@ -70,7 +74,7 @@ public class ManualDataEntry {
             //***************************STUDENTS ASSIGNMENTS TO THE COURSES*********************************************************************************
             ArrayList<Integer> studentsToAssign = new ArrayList<>();
 
-            if (ALLSTUDENTS.size() != 0) {                             //ASKING USER IF WANT TO ADD ALREADY EXISTING STUDENTS
+            if (ALLSTUDENTS.size() != 0) {                             //ASKING USER IF HE WANTS TO ADD ALREADY EXISTING STUDENTS
                 System.out.println("Do you want to assign some already existing students to the course? (yes/no)");
                 if (ReadFromUserUtilities.readYesOrNo()) {
                     System.out.println("Enter the numbers of the Students below to assign them. Seperate the values by commas, like in the following example: 5,8,9,11");
@@ -92,7 +96,7 @@ public class ManualDataEntry {
 
             System.out.println("Do you want to add new students for the course? (yes/no)");
             while (ReadFromUserUtilities.readYesOrNo()) {
-                Student student = ReadModelsFromUser.getStudentFromUser();
+                Student student = ReadFromUserModels.getStudentFromUser();
                 ALLSTUDENTS.add(student);
                 studentsToAssign.add(ALLSTUDENTS.indexOf(student));
                 System.out.println("Do you want to add new Student for the course? (yes/no)");
@@ -135,7 +139,7 @@ public class ManualDataEntry {
 
             System.out.println("Do you want to add new individual assignment for the course? (yes/no)");
             while (ReadFromUserUtilities.readYesOrNo()) {
-                Assignment assignment = ReadModelsFromUser.getAssignment(false);
+                Assignment assignment = ReadFromUserModels.getAssignment(false);
                 ALLASSIGNMENTS.add(assignment);
                 individualAssignmentsToAssignToStudents.add(ALLASSIGNMENTS.indexOf(assignment));
                 System.out.println("Do you want to add new individual assignment for the course? (yes/no)");
@@ -155,7 +159,7 @@ public class ManualDataEntry {
 
             System.out.println("Do you want to add new group assignment for the course? (yes/no)");
             while (ReadFromUserUtilities.readYesOrNo()) {
-                Assignment assignment = ReadModelsFromUser.getAssignment(true);
+                Assignment assignment = ReadFromUserModels.getAssignment(true);
                 ALLASSIGNMENTS.add(assignment);
                 groupAssignmentsToAssignToStudents.add(ALLASSIGNMENTS.indexOf(assignment));
                 System.out.println("Do you want to add new group assignment for the course? (yes/no)");

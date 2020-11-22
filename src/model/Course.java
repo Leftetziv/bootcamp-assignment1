@@ -21,7 +21,6 @@ public class Course {
     private String type;
     private LocalDate startDate;
     private LocalDate endDate;
-
     private ArrayList<Student> students;
     private ArrayList<Trainer> trainers;
 

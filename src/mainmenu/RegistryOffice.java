@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package mainmenu;
 
-import view.dataentry.ReadFromUserUtilities;
-import view.Bootcamp;
+import utilities.ReadFromUserUtilities;
+import repository.Bootcamp;
 import java.util.Scanner;
 
 /**
@@ -15,13 +15,6 @@ import java.util.Scanner;
  */
 public class RegistryOffice {
 
-    /**
-     * @param args the command line arguments
-     *
-     *  
-     * 
-     *
-     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String choiceMenu = "";
@@ -109,17 +102,6 @@ public class RegistryOffice {
             }
         } while (true);
 
-//        registry.printAllCourses();
-//        registry.printAllTrainers();
-//        registry.printAllStudents();
-//        registry.printAllAssignments();
-//        registry.printMultiCourseStudents();
-//
-//        registry.printStudentsPerCourse();
-//        registry.printTrainersPerCourse();
-//        registry.printAssignmentsPerCourse();
-//        registry.printAssignmentsPerStudent();    
-//        registry.printAssignmentsToSubmitPerWeek();
     }
 
 }
